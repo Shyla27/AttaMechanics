@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AttaMechanics">
         <activity
+            android:name=".Admin.AddEmployees"
+            android:exported="false" />
+        <activity
             android:name=".Admin.Appointments"
             android:exported="false" />
         <activity

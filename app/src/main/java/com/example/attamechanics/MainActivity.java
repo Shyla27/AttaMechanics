@@ -25,6 +25,7 @@ import com.akexorcist.googledirection.model.Direction;
 import com.example.attamechanics.Adapters.GaragesAdapter;
 import com.example.attamechanics.Admin.AdminProfile;
 import com.example.attamechanics.Admin.Appointments;
+import com.example.attamechanics.Admin.EmployeeDetails;
 import com.example.attamechanics.Admin.GoogleMaps;
 import com.example.attamechanics.Admin.MyMechanics;
 import com.example.attamechanics.Admin.MyPrices;
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity{
         });
 
         team.setOnClickListener(view -> {
-            Intent intent1 = new Intent(MainActivity.this, MyMechanics.class);
+            Intent intent1 = new Intent(MainActivity.this, EmployeeDetails.class);
             startActivity(intent1);
             finish();
         });

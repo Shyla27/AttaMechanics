@@ -2,11 +2,13 @@ package com.example.attamechanics.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -20,6 +22,7 @@ import android.location.Location;
 import com.akexorcist.googledirection.DirectionCallback;
 import com.akexorcist.googledirection.model.Direction;
 import com.example.attamechanics.MainActivity;
+import com.example.attamechanics.Notifications;
 import com.example.attamechanics.R;
 import com.example.attamechanics.objects.DriverObject;
 import com.example.attamechanics.objects.RideObject;
@@ -38,6 +41,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -52,6 +56,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class GoogleMaps extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, DirectionCallback {
     private GoogleMap map;
@@ -66,7 +71,7 @@ public class GoogleMaps extends FragmentActivity implements NavigationView.OnNav
     boolean started = false;
     boolean zoomUpdated = false;
     RideObject mCurrentRide;
-
+    BottomNavigationView bottomNavigation;
     GeoQuery geoQuery;
     private FusedLocationProviderClient mFusedLocationClient;
     List<RideObject> requestList = new ArrayList<>();
@@ -75,6 +80,32 @@ public class GoogleMaps extends FragmentActivity implements NavigationView.OnNav
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_maps);
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        bottomNavigation.setOnNavigationItemSelectedListener(item -> {
+            switch(item.getItemId())
+            {
+                case R.id.myaccount:
+                    startActivity(new Intent(getApplicationContext(), AdminProfile.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.navigation_home:
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    overridePendingTransition(0,0);
+
+                    return true;
+                case R.id.action_nearby:
+                    startActivity(new Intent(getApplicationContext(), GoogleMaps.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.notify:
+
+                    startActivity(new Intent(getApplicationContext(), Notifications.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+            }
+            return false;
+        });
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 

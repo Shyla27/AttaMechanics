@@ -106,5 +106,6 @@
     <string name="confirm">Confirm</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="working">Working</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 
 </resources>
