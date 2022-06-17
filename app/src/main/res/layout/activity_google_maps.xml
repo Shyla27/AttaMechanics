@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.GoogleMaps">
+
+
+
+    <LinearLayout
+        android:id="@+id/container_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <Switch
+            android:id="@+id/workingSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20sp"
+            android:paddingTop="10sp"
+            android:paddingRight="20sp"
+            android:background="@color/primary"
+            android:paddingBottom="10sp"
+            android:text="@string/working"
+            android:textColor="@android:color/background_dark"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    </LinearLayout>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="558dp"
+            android:layout_gravity="center_vertical"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/primary"
+        app:itemIconTint="@android:color/background_dark"
+        app:itemTextColor="@android:color/background_dark"
+        app:menu="@menu/bottom_nav_menu"
+        tools:ignore="NotSibling" />
+
+</RelativeLayout>

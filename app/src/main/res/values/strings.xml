@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">AttaMechanics</string>
+
+    <string name="easydoesit">Easy Does It</string>
+    <string name="action_sign_in_short">Register</string>
+    <string name="email">Email</string>
+
+    <string name="not_approved">Your Account Has Not Been Approved</string>
+
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+    <string name="change_email">Change Email</string>
+    <string name="change_password">Change Password</string>
+    <string name="send_password_reset_email">Send Password reset email</string>
+    <string name="remove_user">Remove user</string>
+    <string name="new_pass">New Password</string>
+    <string name="title_activity_profile">Firebase</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Fullname</string>
+    <string name="btn_login">LOG IN</string>
+    <string name="btn_link_to_register">Not a member? Get registered in Atta Mechs now!</string>
+    <string name="btn_link_to_login">Already registered. Login</string>
+    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+    <string name="btn_forgot_password">Forgot your password?</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="hint_new_email">New Email</string>
+    <string name="btn_change">Change</string>
+    <string name="btn_send">Send</string>
+    <string name="btn_remove">Remove</string>
+    <string name="btn_sign_out">Sign Out</string>
+    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="upload_a_clear_copy_of_your_business_registration_certificate_or_license">Upload a clear copy of your business registration certificate or license</string>
+    <string name="national_id_number">National ID Number</string>
+    <string name="garage_info">Garage Info</string>
+    <string name="office_number">Office Number</string>
+    <string name="contnue">Continue</string>
+    <string name="speciality">Speciality</string>
+    <string name="todo">TODO</string>
+    <string name="garage_name">Garage Name</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="kindly_uncheck_services_you_do_not_offer">Kindly uncheck services you do not offer</string>
+    <string name="garage_speciality">Garage Speciality</string>
+    <string name="possible_car_problems">Possible Car Problems:</string>
+    <string name="upload_the_front_side_of_your_national_id_showing_details">Upload the front side of your National ID showing details</string>
+    <string name="upload">Upload</string>
+    <string name="admin_details">ADMIN DETAILS</string>
+
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="signup_login_hint">Already have an account? Sign In</string>
+    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+    <string name="garage_w">"At Atta,Easy Does it."</string>
+    <string name="welcomemessage">Let\'s Get you Started</string>
+    <string name="my_prices">My Prices</string>
+    <string name="car_services">Car Services Around</string>
+    <string name="job_success">Job Success</string>
+    <string name="ui_ux_designer">UI/UX Designer</string>
+    <string name="my_desc">Doing at the sweet spot between aesthetics and elegance to give life to your brand.My opinion belong to nobody but myself.</string>
+    <string name="about_me">About Me</string>
+    <string name="contact">Contact</string>
+    <string name="skills">Skills</string>
+    <string name="ratings">Star Ratings</string>
+    <string name="samplereview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium bibendum sapien, ut euismod massa. Duis convallis sem sed turpis elementum auctor.</string>
+
+
+    <string-array name="Possible_Car_Problems">
+        <item>Battery</item>
+        <item>Belts</item>
+        <item>Brakes</item>
+        <item>Car Purchase</item>
+        <item>Clutch &amp; Transmission</item>
+        <item> Doors </item>
+        <item>  Engine (Under the Hood) </item>
+        <item> Exhaust System </item>
+        <item> Filters </item>
+        <item> Fluids </item>
+        <item> Fuel System</item>
+        <item> Heating &amp; AC </item>
+        <item>Hoses </item>
+        <item>Ignition </item>
+        <item>Lights </item>
+        <item>Mirrors </item>
+        <item>Sensors </item>
+        <item>Suspension &amp; Steering</item>
+        <item>Switches </item>
+        <item>Tires </item>
+        <item> Windows </item>
+        <item>  Wiper System</item>
+
+    </string-array>
+
+    <string name="type_4">Bike</string>
+    <string name="type_3">SUV</string>
+    <string name="type_2">Van</string>
+    <string name="type_1">Car</string>
+
+    <string name="how_was_your_ride">How was your ride?</string>
+
+    <string name="phone">Phone</string>
+    <string name="name">Name </string>
+    <string name="confirm">Confirm</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="working">Working</string>
+
+</resources>

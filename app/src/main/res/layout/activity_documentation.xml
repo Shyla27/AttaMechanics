@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".Garage.Documentation">
+
+    <ScrollView
+        style="@style/parent">
+
+        <RelativeLayout
+            style="@style/parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:weightSum="12">
+
+                <LinearLayout
+                    style="@style/parent"
+                    android:background="@drawable/login_shape_bk"
+                    android:orientation="vertical"
+                    android:layout_weight="3">
+
+                    <ImageView
+                        style="@style/parent"
+                        android:background="@drawable/ic_login_bk"
+                        android:contentDescription="login background" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    style="@style/headerText"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:src="@drawable/atta"/>
+
+
+                <LinearLayout
+                    android:id="@+id/layout_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_horizontal_margin">
+
+
+
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/idnumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="@string/national_id_number"
+
+                            android:background="@drawable/border"
+                            android:inputType="number"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/primary" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/idnum"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/nationalid"
+                            android:text="@string/upload_the_front_side_of_your_national_id_showing_details"/>
+
+
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnChoose"
+                            android:text="Choose"
+                            android:background="@drawable/border"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                    <!--Button for choosing image from gallery-->
+                    <RelativeLayout
+                        android:id="@+id/layout_utton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <!--Button for uploading image-->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnUpload"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:layout_toStartOf="@id/btnChoose"
+                            android:text="@string/upload"
+                            tools:ignore="NotSibling" />
+
+                    </RelativeLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/businesscert"
+                            android:text="@string/upload_a_clear_copy_of_your_business_registration_certificate_or_license"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/uploadcert"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="Upload"
+                            android:textColor="@color/background" />
+
+                        <!--Button for uploading image-->
+
+
+                    </RelativeLayout>
+
+                    <!--Image View for showing image chosen from gallery-->
+                    <ImageView
+                        android:id="@+id/imgView"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp" />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/coninue"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/background"
+                        android:text="Continue"
+                        android:textColor="@color/primary" />
+
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+</RelativeLayout>
