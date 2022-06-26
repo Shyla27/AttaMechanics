@@ -126,6 +126,7 @@ public class Login extends AppCompatActivity {
 
             return;
         if (type.equals("Mechanic Details")) {
+            Toast.makeText(this, "Welcome Back! " ,Toast.LENGTH_SHORT).show();
 
             Intent Signup = new Intent(getApplicationContext(), MechanicsDashboard.class);
             startActivity(Signup);
@@ -133,6 +134,7 @@ public class Login extends AppCompatActivity {
         }
         else if (type.equals("Garage Admin")) {
             DatabaseReference admindatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers");
+            Toast.makeText(this, "Welcome Back! " ,Toast.LENGTH_SHORT).show();
 
             Intent Signup = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(Signup);

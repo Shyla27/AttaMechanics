@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity{
         });
 
         team.setOnClickListener(view -> {
-            Intent intent1 = new Intent(MainActivity.this, EmployeeDetails.class);
+            Intent intent1 = new Intent(MainActivity.this, MyMechanics.class);
             startActivity(intent1);
             finish();
         });

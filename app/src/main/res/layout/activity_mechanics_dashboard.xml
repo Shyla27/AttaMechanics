@@ -49,6 +49,12 @@
         </LinearLayout>
 
 
+
+<!--        <include-->
+
+
+<!--            layout="@layout/layout_mechanics"/>-->
+
     </LinearLayout>
 
 

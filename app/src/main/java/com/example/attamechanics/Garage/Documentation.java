@@ -79,7 +79,7 @@ public class Documentation extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             Toast.makeText(getApplicationContext(), "Documents under review.You will be notified to create a garage account", Toast.LENGTH_SHORT).show();
 
-            Intent i = new Intent(Documentation.this, Garageinfo.class);
+            Intent i = new Intent(Documentation.this, EditGarageProfile.class);
             startActivity(i);
             finish();
         });

@@ -16,15 +16,14 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.attamechanics.Adapters.User;
 import com.example.attamechanics.Garage.AllGarages;
 import com.example.attamechanics.Garage.Documentation;
 import com.example.attamechanics.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,17 +54,13 @@ public class Signup extends AppCompatActivity {
     private String username, fname, email, password, phone, confirmpass;
     private static final String USERS = "users";
     private String TAG = "Signup";
-
-
+    private String memberID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-
         auth = FirebaseAuth.getInstance();
         database= FirebaseDatabase.getInstance();
-        mdatabase = database.getReference(USERS);
         btnSignIn = findViewById(R.id.sign_in_button);
         btnSignUp = findViewById(R.id.sign_up_button);
         inputEmail = findViewById(R.id.useremail);
@@ -75,6 +70,8 @@ public class Signup extends AppCompatActivity {
         name = findViewById(R.id.username);
         progressBar = findViewById(R.id.progressBar);
         userType=(Spinner)findViewById(R.id.userType);
+        database= FirebaseDatabase.getInstance();
+        mdatabase = database.getReference("garagedets");
 
         List<String> list = new ArrayList<>();
         list.add("Select Account Type");
@@ -116,6 +113,8 @@ public class Signup extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
 
 
+
+
         btnSignUp.setOnClickListener(view -> {
                 btnSignUp.setVisibility(View.INVISIBLE);
                 progressBar.setVisibility(View.VISIBLE);
@@ -124,6 +123,9 @@ public class Signup extends AppCompatActivity {
                 String mobilenumber = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
                 String confirmpass = confirmpassword.getText().toString().trim();
+
+                memberID = mobilenumber;
+
 
 
                 if (email.isEmpty() || fullname.isEmpty() || mobilenumber.isEmpty() ||
@@ -141,16 +143,19 @@ public class Signup extends AppCompatActivity {
     }
 
     private void CreateUserAccount(String email, String fullname, String password, String mobilenumber) {
+        User user = new User(fullname, email);
+        database.getReference("garagedets/profile").child("officenumber").setValue(memberID);
+
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         showMessage("Account Created");
                         userID = auth.getCurrentUser().getUid();
-                        Map<String, Object> user = new HashMap<>();
-                        user.put("Name", fullname);
-                        user.put("Email", email);
-                        user.put("password",password);
-                        user.put("mobilenumber", mobilenumber);
+                        Map<String, Object> users = new HashMap<>();
+                        users.put("Name", fullname);
+                        users.put("Email", email);
+                        users.put("password",password);
+                        users.put("mobilenumber", mobilenumber);
                         updateUI();
 
                     }
@@ -166,7 +171,9 @@ public class Signup extends AppCompatActivity {
 
     public void updateUI() {
         String keyid = mdatabase.push().getKey();
-        mdatabase.child(keyid).setValue(user);
+
+        mdatabase.child("officenumber").setValue(memberID);
+
         if (verifyType())
 
             return;

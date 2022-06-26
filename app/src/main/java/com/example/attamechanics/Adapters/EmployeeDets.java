@@ -4,19 +4,34 @@ public class EmployeeDets {
 
         private String employeename;
         private String employeeemail;
+        private String imgUrl;
         private String employeeContactNumber;
         private String employeeSpecialty;
         public  EmployeeDets() {
-
         }
+
+        public EmployeeDets(String employeename, String imgUrl){
+            this.employeename = employeename;
+            this.imgUrl = imgUrl;
+        }
+
         public String getEmployeename() {
             return  employeename;
         }
+
         public void setEmployeename(String employeename) {
             this.employeename = employeename;
         }
 
-        public String getEmployeeemail () {
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getEmployeeemail () {
             return  employeeemail;
         }
         public void setEmployeeemail(String employeeemail) {

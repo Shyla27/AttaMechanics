@@ -22,7 +22,7 @@ public class Splash extends AppCompatActivity {
                     sleep(5 * 1000);
 
                     // After 5 seconds redirect to another intent
-                    Intent i = new Intent(getBaseContext(), Login.class);
+                    Intent i = new Intent(getBaseContext(), FirstPage.class);
                     startActivity(i);
 
                     //Remove activity

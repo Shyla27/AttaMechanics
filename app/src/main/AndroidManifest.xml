@@ -19,6 +19,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AttaMechanics">
         <activity
+            android:name=".Garage.EditGarageProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Mechs.Approved"
+            android:exported="false" />
+        <activity
+            android:name=".Auth.FirstPage"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.EditAppointment"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AddAppointment"
+            android:exported="false" />
+        <activity
             android:name=".Admin.AddEmployees"
             android:exported="false" />
         <activity

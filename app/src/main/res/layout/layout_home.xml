@@ -45,14 +45,6 @@
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/editgarage"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="10dp"
-                    android:contentDescription="TODO"
-                    android:padding="3dp"
-                    android:src="@drawable/edit" />
 
             </LinearLayout>
 
