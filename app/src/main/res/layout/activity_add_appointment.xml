@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    tools:context=".Admin.AddAppointment">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idTILCourseName"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Appointment Date"
+            android:padding="5dp"
+            android:textColorHint="@color/background"
+            app:hintTextColor="@color/background">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/appointmentname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textImeMultiLine|textMultiLine"
+                android:textColor="@color/background"
+                android:textColorHint="@color/background"
+                android:textSize="14sp" />
+
+            <CalendarView
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:onClick="onClick"
+                android:selectedWeekBackgroundColor="@color/black"
+                android:weekNumberColor="@color/black"
+                android:weekSeparatorLineColor="@color/primary"
+                tools:ignore="OnClick" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!--edit text for course image link-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idTILCourseImageLink"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Enter Car Number Plates"
+            android:padding="5dp"
+            android:textColorHint="@color/background"
+            app:hintTextColor="@color/background">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idEdtCarLink"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textImeMultiLine|textMultiLine"
+                android:textColor="@color/background"
+                android:textColorHint="@color/background"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--edit text for course link-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idTILCourseLink"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Car Problems"
+            android:padding="5dp"
+            android:textColorHint="@color/background"
+            app:hintTextColor="@color/background">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idEdtCourseLink"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textImeMultiLine|textMultiLine"
+                android:textColor="@color/background"
+                android:textColorHint="@color/background"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--edit text for course link-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tasktoemployee"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Garage  to Work "
+            android:padding="5dp"
+            android:textColorHint="@color/background"
+            app:hintTextColor="@color/background">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/assignEmployee"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textImeMultiLine|textMultiLine"
+                android:textColor="@color/background"
+                android:textColorHint="@color/background"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!--button for adding a new course-->
+        <Button
+            android:id="@+id/idBtnAddCourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_back"
+            android:text="Add Your Appointment"
+            android:textAllCaps="false" />
+
+        <ProgressBar
+            android:id="@+id/idPBLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/progress_back"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+    </RelativeLayout>
