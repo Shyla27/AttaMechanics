@@ -102,7 +102,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:hint="Enter Garage Speciality"
+            android:hint="Enter Garage's main  Speciality"
             android:padding="5dp"
             android:textColorHint="@color/background"
             app:hintTextColor="@color/background">
@@ -127,19 +127,49 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:hint="Enter Garage Location"
+            android:hint="Enter Garage Latitude"
             android:padding="5dp"
             android:textColorHint="@color/background"
             app:hintTextColor="@color/background">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/garagelocation"
+                android:id="@+id/latitude"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:importantForAutofill="no"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/showLongitude"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Enter Garage Longitude"
+            android:padding="5dp"
+            android:textColorHint="@color/background"
+            app:hintTextColor="@color/background">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/longitude"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/livelocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GET LIVE LOCATION" />
 
 
         <androidx.appcompat.widget.AppCompatButton

@@ -61,10 +61,13 @@
         <item name="android:textColor">@color/background</item>
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
     <style name="modifiedEditText" parent="parent">
         <item name="android:textSize">@dimen/newsMoreTextSize</item>
         <item name="fontFamily">@font/nunito_sans_light</item>
-        <item name="android:backgroundTint">@color/primary</item>
     </style>
 
     <style name="viewParent">
@@ -78,4 +81,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="viewParent.headerText">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">@dimen/headerTextSize</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

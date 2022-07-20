@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.attamechanics.Adapters.AppointmentsLVAdapter;
-import com.example.attamechanics.Adapters.DataModal;
 import com.example.attamechanics.Adapters.EmployeeDets;
 import com.example.attamechanics.Adapters.TeamLVAdapter;
 import com.example.attamechanics.MainActivity;

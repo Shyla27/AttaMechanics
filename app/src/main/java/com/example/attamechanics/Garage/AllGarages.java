@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.attamechanics.Adapters.GaragesAdapter;
+import com.example.attamechanics.Admin.AddAppointment;
 import com.example.attamechanics.Auth.Login;
 import com.example.attamechanics.Mechs.Approved;
 import com.example.attamechanics.Mechs.MechanicsDashboard;
@@ -25,13 +27,13 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class AllGarages extends AppCompatActivity {
-    private Button skip,proceed;
+    private Button proceed;
     private ListView garageLV;
 
     // creating a new array list.
-    ArrayList<String> garagesArrayList;
-
-    DatabaseReference reference;
+    private ArrayList<String> garagesArrayList = new ArrayList<>();
+    private DatabaseReference reference;
+    private FirebaseDatabase firebaseDatabase;
 
 
     @Override
@@ -39,23 +41,18 @@ public class AllGarages extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_garages);
 
-        skip= findViewById(R.id.skip);
         proceed = findViewById(R.id.proceed);
 
-        skip.setOnClickListener(view -> {
-            Intent i = new Intent(getBaseContext(), Login.class);
-            startActivity(i);
-        });
-
         proceed.setOnClickListener(view -> {
-            Intent i = new Intent(getBaseContext(), Approved.class);
+            Intent i = new Intent(getBaseContext(), AddAppointment.class);
             startActivity(i);
         });
-
         garageLV = findViewById(R.id.idLVgarages);
 
         // initializing our array list
         garagesArrayList = new ArrayList<String>();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference().child("garagedets");
 
         // calling a method to get data from
         // Firebase and set data to list view
@@ -64,11 +61,12 @@ public class AllGarages extends AppCompatActivity {
 
     private void initializeListView() {
          ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, garagesArrayList);
-        reference = FirebaseDatabase.getInstance().getReference("garagedets/");
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Map<String, Object> map = (Map<String, Object>) snapshot.getValue();
+                String value = snapshot.child("garagename").getValue(String.class);
+                garagesArrayList.add(value);
+               // Map<String, Object> map = (Map<String, Object>) snapshot.getValue();
               //  garagesArrayList.add(snapshot.getValue(String.class));
                 adapter.notifyDataSetChanged();
             }
@@ -95,5 +93,8 @@ public class AllGarages extends AppCompatActivity {
             }
         });
         garageLV.setAdapter(adapter);
+    }
+    protected void populateView(View view , GaragesAdapter garagesAdapter, int position) {
+
     }
 }

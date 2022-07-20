@@ -1,5 +1,6 @@
 package com.example.attamechanics.Garage;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,9 +19,13 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.attamechanics.Adapters.Admin;
+import com.example.attamechanics.Adapters.GaragesAdapter;
 import com.example.attamechanics.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -41,13 +46,15 @@ public class Documentation extends AppCompatActivity {
     StorageReference storageReference;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
+    private static final int REQUEST_LOCATION = 1;
+    private String garageID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_documentation);
 
-        idnumber = findViewById(R.id.idnumber);
+        idnumber = findViewById(R.id.idNumber);
         btnSelect = findViewById(R.id.btnChoose);
         Button btnUpload = findViewById(R.id.btnUpload);
         imageView = findViewById(R.id.imgView);
@@ -56,7 +63,8 @@ public class Documentation extends AppCompatActivity {
         uploadcert = findViewById(R.id.uploadcert);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("garagedets");
         uploadcert.setOnClickListener(view ->UploadCert());
 
         btnSelect.setOnClickListener(view -> SelectImage());
@@ -77,11 +85,24 @@ public class Documentation extends AppCompatActivity {
                 return;
             }
             progressBar.setVisibility(View.VISIBLE);
-            Toast.makeText(getApplicationContext(), "Documents under review.You will be notified to create a garage account", Toast.LENGTH_SHORT).show();
+            garageID = idnum;
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-            Intent i = new Intent(Documentation.this, EditGarageProfile.class);
-            startActivity(i);
-            finish();
+                    Toast.makeText(getApplicationContext(), "Documents under review.You will be notified to create a garage account", Toast.LENGTH_SHORT).show();
+
+                    Intent i = new Intent(Documentation.this, EditGarageProfile.class);
+                    startActivity(i);
+                    finish();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(Documentation.this, "Fail to add Info..", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         });
     }
 

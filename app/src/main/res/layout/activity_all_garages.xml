@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
     android:background="@color/white"
-    tools:context=".Auth.FirstPage">
+    tools:context=".Garage.AllGarages">
 
 
     <ProgressBar
@@ -19,52 +19,84 @@
 
 
 
-<!--    <ListView-->
-<!--        android:id="@+id/idLVgarages"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent" />-->
+    <ScrollView
+        style="@style/parent">
+
+        <RelativeLayout
+            style="@style/parent">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:id="@+id/rlgarage"
-                android:orientation="vertical">
+                android:weightSum="12">
+
+                <LinearLayout
+                    style="@style/parent"
+                    android:background="@drawable/login_shape_bk"
+                    android:orientation="vertical"
+                    android:layout_weight="3">
+
+                    <ImageView
+                        style="@style/parent"
+                        android:background="@drawable/ic_login_bk"
+                        android:contentDescription="login background" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="130dp"
+                    style="@style/headerText"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:src="@drawable/atta"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:text="Choose garage  "
+                    android:fontFamily="@font/nunito_sans_light"
+                    android:textColor="@color/background"
+                    />
+
 
 
                     <ListView
                         android:id="@+id/idLVgarages"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp" />
 
 
-                <Button
-                    android:id="@+id/skip"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/rlgarage"
-                    android:background="@drawable/button_back"
-                    android:text="Skip"
-                    android:textAllCaps="false"
-                    tools:ignore="NotSibling" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="12dp"/>
+
 
                 <Button
                     android:id="@+id/proceed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/skip"
                     android:background="@drawable/button_back"
                     android:text="Proceed"
                     android:textAllCaps="false" />
 
-
-
             </LinearLayout>
 
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

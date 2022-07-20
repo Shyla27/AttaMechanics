@@ -3,12 +3,10 @@ package com.example.attamechanics.Admin;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,15 +20,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.attamechanics.Adapters.AppointmentsLVAdapter;
+import com.example.attamechanics.Adapters.AppointmentsRV;
 import com.example.attamechanics.Adapters.AppointmentsRVAdapter;
-import com.example.attamechanics.Adapters.DataModal;
 import com.example.attamechanics.Auth.Login;
 import com.example.attamechanics.MainActivity;
 import com.example.attamechanics.Notifications;
 import com.example.attamechanics.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,22 +35,17 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
-public class Appointments extends AppCompatActivity {
+public class Appointments extends AppCompatActivity implements AppointmentsRVAdapter.AppointmentClickInterface {
     BottomNavigationView bottomNavigation;
     ListView coursesLV;
-    ArrayList<DataModal> dataModalArrayList;
+    ArrayList<AppointmentsRV> dataModalArrayList;
     FirebaseFirestore db;
     private AppointmentsRVAdapter appointmentsRVAdapter;
-
     private FloatingActionButton addCourseFAB;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -63,6 +53,7 @@ public class Appointments extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressBar loadingPB;
     private RelativeLayout homeRL;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +66,7 @@ public class Appointments extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         dataModalArrayList = new ArrayList<>();
-        databaseReference = firebaseDatabase.getReference().child("Appointments");
+        databaseReference = firebaseDatabase.getReference("Appointments");
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch(item.getItemId())
@@ -102,13 +93,9 @@ public class Appointments extends AppCompatActivity {
             return false;
         });
 
-        addCourseFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Appointments.this, AddAppointment.class);
-                startActivity(i);
-
-            }
+        addCourseFAB.setOnClickListener(view -> {
+            Intent i = new Intent(Appointments.this, AddAppointment.class);
+            startActivity(i);
 
         });
         appointmentsRVAdapter = new AppointmentsRVAdapter(dataModalArrayList, this, this::onAppointmentClick);
@@ -125,7 +112,7 @@ public class Appointments extends AppCompatActivity {
         displayBottomSheet(dataModalArrayList.get(i));
     }
 
-    private void displayBottomSheet(DataModal dataModal) {
+    private void displayBottomSheet(AppointmentsRV dataModal) {
 
         final BottomSheetDialog bottomSheetTeachersDialog = new BottomSheetDialog(this, R.style.BottomSheetDialogTheme);
         // on below line we are inflating our layout file for our bottom sheet.
@@ -146,20 +133,17 @@ public class Appointments extends AppCompatActivity {
         TextView priceTV = layout.findViewById(R.id.idTVCoursePrice);
         ImageView courseIV = layout.findViewById(R.id.idIVCourse);
         // on below line we are setting data to different views on below line.
-        courseNameTV.setText(dataModal.getName());
-        priceTV.setText("2022" + dataModal.getDate());
-        Picasso.get().load(dataModal.getImgUrl()).into(courseIV);
+        courseNameTV.setText(dataModal.getAppointmentName());
+        priceTV.setText("2022" + dataModal.getTimeDate());
+        Picasso.get().load(dataModal.getCarImage()).into(courseIV);
         Button viewBtn = layout.findViewById(R.id.idBtnVIewDetails);
         Button editBtn = layout.findViewById(R.id.idBtnEditCourse);
 
-        editBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Appointments.this, EditAppointment.class);
-                // on below line we are passing our course courseRVModal
-                i.putExtra("course", dataModal);
-                startActivity(i);
-            }
+        editBtn.setOnClickListener(view -> {
+            Intent i = new Intent(Appointments.this, EditAppointment.class);
+            // on below line we are passing our course courseRVModal
+            i.putExtra("course", dataModal);
+            startActivity(i);
         });
 //        viewBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -204,7 +188,7 @@ public class Appointments extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 loadingPB.setVisibility(View.GONE);
                 // adding snapshot to our array list on below line.
-                dataModalArrayList.add(snapshot.getValue(DataModal.class));
+                dataModalArrayList.add(snapshot.getValue(AppointmentsRV.class));
                 // notifying our adapter that data has changed.
 appointmentsRVAdapter.notifyDataSetChanged();
             }
@@ -233,5 +217,10 @@ appointmentsRVAdapter.notifyDataSetChanged();
 
             }
         });
+    }
+
+    @Override
+    public void onCourseClick(int position) {
+        displayBottomSheet(dataModalArrayList.get(position));
     }
 }

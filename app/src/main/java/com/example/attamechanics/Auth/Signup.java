@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.attamechanics.Adapters.User;
 import com.example.attamechanics.Garage.AllGarages;
 import com.example.attamechanics.Garage.Documentation;
+import com.example.attamechanics.MainActivity;
 import com.example.attamechanics.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -71,7 +72,7 @@ public class Signup extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         userType=(Spinner)findViewById(R.id.userType);
         database= FirebaseDatabase.getInstance();
-        mdatabase = database.getReference("garagedets");
+        mdatabase = database.getReference("users");
 
         List<String> list = new ArrayList<>();
         list.add("Select Account Type");
@@ -144,7 +145,6 @@ public class Signup extends AppCompatActivity {
 
     private void CreateUserAccount(String email, String fullname, String password, String mobilenumber) {
         User user = new User(fullname, email);
-        database.getReference("garagedets/profile").child("officenumber").setValue(memberID);
 
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
@@ -172,8 +172,6 @@ public class Signup extends AppCompatActivity {
     public void updateUI() {
         String keyid = mdatabase.push().getKey();
 
-        mdatabase.child("officenumber").setValue(memberID);
-
         if (verifyType())
 
             return;
@@ -183,7 +181,7 @@ public class Signup extends AppCompatActivity {
             finish();
         }
         else if (type.equals("Admin Details")) {
-            Intent Signup = new Intent(getApplicationContext(), Documentation.class);
+            Intent Signup = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(Signup);
             finish();
         }

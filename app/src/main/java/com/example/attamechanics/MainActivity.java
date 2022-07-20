@@ -14,6 +14,7 @@ import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
@@ -41,12 +42,14 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity{
@@ -57,7 +60,10 @@ public class MainActivity extends AppCompatActivity{
     GaragesAdapter garagesAdapter;
     LinearLayout profileCard;
     RelativeLayout appointments, carservice, team, prices;
-
+    TextView garagename;
+    private ArrayList<String> garagesArrayList = new ArrayList<>();
+    private DatabaseReference reference;
+    private FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +98,15 @@ public class MainActivity extends AppCompatActivity{
             return false;
         });
 
+        garagename = findViewById(R.id.garagename);
+        garagesArrayList = new ArrayList<String>();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference().child("garagedets");
+
+        // calling a method to get data from
+        // Firebase and set data to list view
+        initializeListView();
+        
         profileCard.setOnClickListener(view -> {
             Intent intent1 = new Intent(MainActivity.this, Garageinfo.class);
             startActivity(intent1);
@@ -124,6 +139,36 @@ public class MainActivity extends AppCompatActivity{
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Atta Mechs");
 
+
+    }
+
+    private void initializeListView() {
+        reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                GaragesAdapter newPost = snapshot.child("garagename").getValue(GaragesAdapter.class);
+                System.out.println(("Garagename: " + newPost.getGaragename()));
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 

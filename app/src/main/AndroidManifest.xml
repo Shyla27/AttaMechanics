@@ -19,6 +19,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AttaMechanics">
         <activity
+            android:name=".Users.NearbyGarages"
+            android:exported="false" />
+        <activity
+            android:name=".Users.UserSignUp"
+            android:exported="false" />
+        <activity
+            android:name=".Users.RegisterCar"
+            android:exported="false" />
+        <activity
+            android:name=".Users.MakeAppointment"
+            android:exported="false" />
+        <activity
+            android:name=".Users.UserDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Users.UserLogin"
+            android:exported="false" />
+        <activity
             android:name=".Garage.EditGarageProfile"
             android:exported="false" />
         <activity

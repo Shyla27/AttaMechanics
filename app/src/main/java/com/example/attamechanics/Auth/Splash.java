@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.attamechanics.Admin.GoogleMaps;
+import com.example.attamechanics.Garage.Documentation;
+import com.example.attamechanics.Garage.EditGarageProfile;
+import com.example.attamechanics.Garage.Garageinfo;
 import com.example.attamechanics.R;
 
 public class Splash extends AppCompatActivity {

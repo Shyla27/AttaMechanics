@@ -7,45 +7,33 @@
     tools:context=".Admin.GoogleMaps">
 
 
-
-    <LinearLayout
-        android:id="@+id/container_toolbar"
+    <fragment android:id="@+id/autocomplete_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints">
-
-        <Switch
-            android:id="@+id/workingSwitch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20sp"
-            android:paddingTop="10sp"
-            android:paddingRight="20sp"
-            android:background="@color/primary"
-            android:paddingBottom="10sp"
-            android:text="@string/working"
-            android:textColor="@android:color/background_dark"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-    </LinearLayout>
+        android:layout_height="50dp"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        />
 
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/map"-->
+    <!--        android:name="com.google.android.gms.maps.SupportMapFragment"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_below="@id/autocomplete_fragment"-->
+    <!--        android:layout_height="fill_parent"-->
+    <!--        tools:context=".MapsActivity" />-->
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/autocomplete_fragment" />
 
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="558dp"
-            android:layout_gravity="center_vertical"
-            tools:ignore="MissingConstraints" />
-
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 

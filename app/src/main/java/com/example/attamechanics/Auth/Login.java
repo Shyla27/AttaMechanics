@@ -47,6 +47,7 @@ public class Login extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.btn_login);
         TextView btnReset = findViewById(R.id.btn_reset_password);
         Spinner userType = findViewById(R.id.userType);
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         List<String> list = new ArrayList<>();
         list.add("Select Account Type");
