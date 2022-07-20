@@ -14,19 +14,25 @@
         android:layout_height="wrap_content"
         android:background="@color/white">
 
-        <!--image view for our course-->
-        <ImageView
-            android:id="@+id/idIVcar"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop" />
 
-        <!--text view for course name-->
+        <TextView
+            android:id="@+id/carmodel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_toStartOf="@id/idDateTime"
+            android:layout_toLeftOf="@id/idDateTime"
+            android:padding="4dp"
+            android:text="Car model"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/idTVCarName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idIVcar"
+            android:layout_below="@id/carmodel"
             android:layout_margin="3dp"
             android:layout_toStartOf="@id/idDateTime"
             android:layout_toLeftOf="@id/idDateTime"
@@ -41,9 +47,8 @@
             android:id="@+id/idDateTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idIVcar"
+            android:layout_below="@id/idTVCarName"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_margin="3dp"
             android:gravity="center"
             android:padding="4dp"

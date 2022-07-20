@@ -1,11 +1,13 @@
 package com.example.attamechanics.Admin;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,6 +19,11 @@ import com.example.attamechanics.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -29,7 +36,9 @@ public class MyMechanics extends AppCompatActivity {
     BottomNavigationView bottomNavigation;
     ListView myMechsLv;
     ArrayList<EmployeeDets> employeeDetsArrayList;
-    FirebaseFirestore db;
+    private ArrayList<String> MechanicsArrayList = new ArrayList<>();
+    private DatabaseReference reference;
+    private FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +47,10 @@ public class MyMechanics extends AppCompatActivity {
 
         myMechsLv = findViewById(R.id.idMyMechanics);
         employeeDetsArrayList = new ArrayList<>();
-        db = FirebaseFirestore.getInstance();
+
         loadDatainMechsListview();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference().child("MechanicsDetails");
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
@@ -74,29 +85,39 @@ public class MyMechanics extends AppCompatActivity {
     }
 
     private void loadDatainMechsListview() {
-        db.collection("MechanicDetails").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, MechanicsArrayList);
+        reference.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                if (!queryDocumentSnapshots.isEmpty()) {
-                    List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                    for (DocumentSnapshot d : list) {
-                        EmployeeDets employeeDets = d.toObject(EmployeeDets.class);
-                        employeeDetsArrayList.add(employeeDets);
-
-                    }
-                    TeamLVAdapter adapter = new TeamLVAdapter(MyMechanics.this,employeeDetsArrayList );
-                    myMechsLv.setAdapter(adapter);
-                } else {
-                    Toast.makeText(MyMechanics.this, "No data found in Database", Toast.LENGTH_SHORT).show();
-
-                }
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String value = snapshot.child("garagename").getValue(String.class);
+                MechanicsArrayList.add(value);
+                // Map<String, Object> map = (Map<String, Object>) snapshot.getValue();
+                //  garagesArrayList.add(snapshot.getValue(String.class));
+                adapter.notifyDataSetChanged();
             }
-        }).addOnFailureListener(new OnFailureListener() {
+
             @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MyMechanics.this, "Fail to load data..", Toast.LENGTH_SHORT).show();
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                MechanicsArrayList.remove(snapshot.getValue(String.class));
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+        myMechsLv.setAdapter(adapter);
     }
 }

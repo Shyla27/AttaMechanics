@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity{
     public ActionBarDrawerToggle actionBarDrawerToggle;
     GaragesAdapter garagesAdapter;
     LinearLayout profileCard;
-    RelativeLayout appointments, carservice, team, prices;
+    Button appointments, carservice, team, prices;
     TextView garagename;
     private ArrayList<String> garagesArrayList = new ArrayList<>();
     private DatabaseReference reference;
@@ -134,10 +135,6 @@ public class MainActivity extends AppCompatActivity{
             startActivity(intent1);
             finish();
         });
-        Toolbar mToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Atta Mechs");
 
 
     }

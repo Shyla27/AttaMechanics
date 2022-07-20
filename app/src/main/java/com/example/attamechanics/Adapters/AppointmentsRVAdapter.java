@@ -46,16 +46,11 @@ public class AppointmentsRVAdapter extends RecyclerView.Adapter<AppointmentsRVAd
     @Override
     public void onBindViewHolder(@NonNull AppointmentsRVAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position, @NonNull List<Object> payloads)  {
         AppointmentsRV appointmentsRV = appointmentsRVArrayList.get(position);
-        holder.courseTV.setText(appointmentsRV.getAppointmentName());
-        holder.coursePriceTV.setText("Date. " + appointmentsRV.getTimeDate());
-        Picasso.get().load(appointmentsRV.getCarImage()).into(holder.courseIV);
+        holder.idTVCarName.setText(appointmentsRV.getAppointmentName());
+        holder.idDateTime.setText("Date. " + appointmentsRV.getTimeDate());
+        Picasso.get().load(appointmentsRV.getCarImage()).into(holder.idIVcar);
         setAnimation(holder.itemView, position);
-        holder.courseIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                appointmentClickInterface.onCourseClick(position);
-            }
-        });
+        holder.idIVcar.setOnClickListener(view -> appointmentClickInterface.onCourseClick(position));
 
     }
 
@@ -75,14 +70,14 @@ public class AppointmentsRVAdapter extends RecyclerView.Adapter<AppointmentsRVAd
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView courseIV;
-        private TextView courseTV, coursePriceTV;
+        private ImageView idIVcar;
+        private TextView idTVCarName, idDateTime;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            courseIV = itemView.findViewById(R.id.idIVCourse);
-            courseTV = itemView.findViewById(R.id.idTVCarName);
-            coursePriceTV = itemView.findViewById(R.id.idDateTime);
+            idDateTime = itemView.findViewById(R.id.idDateTime);
+            idTVCarName = itemView.findViewById(R.id.idTVCarName);
+            idIVcar = itemView.findViewById(R.id.carmodel);
         }
     }
     public interface AppointmentClickInterface {

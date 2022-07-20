@@ -4,30 +4,30 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class AppointmentsRV implements Parcelable {
-    private String appointmentName;
     private String timeDate;
-    private String carImage;
-    private String appointmentLink;
+    private String numberplates;
+    private String carModel;
+    private  String carProblem;
     private String appointmentId;
 
-    public AppointmentsRV(String courseID, String courseName, String courseImg, String datetime) {
+    public AppointmentsRV(String appointmentId, String timeDate, String numberplates, String carModel) {
 
     }
 
     protected AppointmentsRV(Parcel in) {
-        appointmentName = in.readString();
+        numberplates = in.readString();
         timeDate = in.readString();
-        carImage = in.readString();
-        appointmentLink = in.readString();
+        carModel = in.readString();
+        carProblem = in.readString();
         appointmentId = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(appointmentName);
+        dest.writeString(carModel);
         dest.writeString(timeDate);
-        dest.writeString(carImage);
-        dest.writeString(appointmentLink);
+        dest.writeString(carProblem);
+        dest.writeString(numberplates);
         dest.writeString(appointmentId);
     }
 
@@ -58,11 +58,11 @@ public class AppointmentsRV implements Parcelable {
 
 
     public String getAppointmentName() {
-        return appointmentName;
+        return numberplates;
     }
 
     public void setAppointmentName(String appointmentName) {
-        this.appointmentName = appointmentName;
+        this.numberplates = appointmentName;
     }
 
     public String getTimeDate() {
@@ -74,18 +74,18 @@ public class AppointmentsRV implements Parcelable {
     }
 
     public String getCarImage() {
-        return carImage;
+        return carModel;
     }
 
     public void setCarImage(String carImage) {
-        this.carImage = carImage;
+        this.carModel = carImage;
     }
 
     public String getAppointmentLink() {
-        return appointmentLink;
+        return carProblem;
     }
 
     public void setAppointmentLink(String appointmentLink) {
-        this.appointmentLink = appointmentLink;
+        this.carProblem = appointmentLink;
     }
 }

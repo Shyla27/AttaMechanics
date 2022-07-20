@@ -16,15 +16,12 @@
         tools:ignore="MissingConstraints">
 
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
-
 
 
 
         <include
-            layout="@layout/layout_home"/>
+            layout="@layout/adminappbar"/>
+
 
 
 </LinearLayout>

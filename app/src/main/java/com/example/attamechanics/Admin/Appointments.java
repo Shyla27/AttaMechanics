@@ -41,7 +41,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class Appointments extends AppCompatActivity implements AppointmentsRVAdapter.AppointmentClickInterface {
-    BottomNavigationView bottomNavigation;
+
     ListView coursesLV;
     ArrayList<AppointmentsRV> dataModalArrayList;
     FirebaseFirestore db;
@@ -67,32 +67,6 @@ public class Appointments extends AppCompatActivity implements AppointmentsRVAda
         mAuth = FirebaseAuth.getInstance();
         dataModalArrayList = new ArrayList<>();
         databaseReference = firebaseDatabase.getReference("Appointments");
-        bottomNavigation = findViewById(R.id.bottom_navigation);
-        bottomNavigation.setOnNavigationItemSelectedListener(item -> {
-            switch(item.getItemId())
-            {
-                case R.id.myaccount:
-                    startActivity(new Intent(getApplicationContext(), AdminProfile.class));
-                    overridePendingTransition(0,0);
-                    return true;
-                case R.id.navigation_home:
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    overridePendingTransition(0,0);
-
-                    return true;
-                case R.id.action_nearby:
-                    startActivity(new Intent(getApplicationContext(), GoogleMaps.class));
-                    overridePendingTransition(0,0);
-                    return true;
-                case R.id.notify:
-
-                    startActivity(new Intent(getApplicationContext(), Notifications.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-            }
-            return false;
-        });
-
         addCourseFAB.setOnClickListener(view -> {
             Intent i = new Intent(Appointments.this, AddAppointment.class);
             startActivity(i);
