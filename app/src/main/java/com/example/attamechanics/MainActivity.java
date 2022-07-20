@@ -146,8 +146,7 @@ public class MainActivity extends AppCompatActivity{
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                GaragesAdapter newPost = snapshot.child("garagename").getValue(GaragesAdapter.class);
-                System.out.println(("Garagename: " + newPost.getGaragename()));
+
             }
 
             @Override
