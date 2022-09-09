@@ -1,70 +1,70 @@
 package com.example.attamechanics;
 
+import static com.example.attamechanics.Utils.Constants.USER;
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.content.Intent;
-import android.location.Location;
-import android.os.Bundle;
-import android.os.Looper;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.akexorcist.googledirection.DirectionCallback;
-import com.akexorcist.googledirection.model.Direction;
 import com.example.attamechanics.Adapters.GaragesAdapter;
+import com.example.attamechanics.Adapters.User;
+import com.example.attamechanics.Admin.AddEmployees;
 import com.example.attamechanics.Admin.AdminProfile;
-import com.example.attamechanics.Admin.Appointments;
+import com.example.attamechanics.Admin.AssignTasks;
+import com.example.attamechanics.Admin.AttaPay;
 import com.example.attamechanics.Admin.EmployeeDetails;
-import com.example.attamechanics.Admin.GoogleMaps;
-import com.example.attamechanics.Admin.MyMechanics;
-import com.example.attamechanics.Admin.MyPrices;
+import com.example.attamechanics.Admin.MyGarage;
 import com.example.attamechanics.Auth.Login;
-import com.example.attamechanics.Garage.Garageinfo;
-import com.example.attamechanics.Mechs.MechProfile;
-import com.example.attamechanics.Mechs.Mytasks;
-import com.example.attamechanics.objects.DriverObject;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
+import com.example.attamechanics.Auth.Signup;
+import com.example.attamechanics.Users.NearbyGarages;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity{
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class MainActivity extends AppCompatActivity implements FirebaseAuth.AuthStateListener,  NavigationView.OnNavigationItemSelectedListener{
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private GoogleSignInClient googleSignInClient;
 
     BottomNavigationView bottomNavigation;
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     GaragesAdapter garagesAdapter;
-    LinearLayout profileCard;
-    Button appointments, carservice, team, prices;
+//    TextView username;
+    CircleImageView circleImageView;
+
+    CardView team,appointments, carservice,prices, cartype;
     TextView garagename;
     private ArrayList<String> garagesArrayList = new ArrayList<>();
     private DatabaseReference reference;
     private FirebaseDatabase firebaseDatabase;
+
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +73,10 @@ public class MainActivity extends AppCompatActivity{
        // getdata();
         appointments = findViewById(R.id.appointments);
         carservice = findViewById(R.id.carService);
-        team = findViewById(R.id.myTeam);
+        team = findViewById(R.id.cardteam);
         prices = findViewById(R.id.myPrices);
-        profileCard = findViewById(R.id.profileCard);
+        cartype = findViewById(R.id.carTypes);
+
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch(item.getItemId())
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity{
                 case R.id.navigation_home:
                     return true;
                 case R.id.action_nearby:
-                    startActivity(new Intent(getApplicationContext(), GoogleMaps.class));
+                    startActivity(new Intent(getApplicationContext(), NearbyGarages.class));
                     overridePendingTransition(0,0);
                     return true;
                 case R.id.notify:
@@ -99,109 +100,120 @@ public class MainActivity extends AppCompatActivity{
             return false;
         });
 
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
         garagename = findViewById(R.id.garagename);
         garagesArrayList = new ArrayList<String>();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        reference = FirebaseDatabase.getInstance().getReference().child("garagedets");
+        reference = FirebaseDatabase.getInstance().getReference().child("GarageInfo/Garages");
 
-        // calling a method to get data from
-        // Firebase and set data to list view
-        initializeListView();
-        
-        profileCard.setOnClickListener(view -> {
-            Intent intent1 = new Intent(MainActivity.this, Garageinfo.class);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        drawerLayout = findViewById(R.id.my_drawer_layout);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.nav_open, R.string.nav_close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+
+        appointments.setOnClickListener(view -> {
+            Intent intent1 = new Intent(MainActivity.this, AssignTasks.class);
             startActivity(intent1);
             finish();
         });
-        appointments.setOnClickListener(view -> {
-            Intent intent1 = new Intent(MainActivity.this, Appointments.class);
+
+        cartype.setOnClickListener(view -> {
+            Intent intent1 = new Intent(MainActivity.this, AttaPay.class);
             startActivity(intent1);
             finish();
         });
         carservice.setOnClickListener(view -> {
-            Intent intent1 = new Intent(MainActivity.this, GoogleMaps.class);
-            startActivity(intent1);
-            finish();
+           // Toast.makeText(getApplicationContext(), "Coming Soon!" , Toast.LENGTH_SHORT).show();
+//            Intent intent1 = new Intent(MainActivity.this, AssignMech.class);
+//            startActivity(intent1);
+//            finish();
         });
 
         team.setOnClickListener(view -> {
-            Intent intent1 = new Intent(MainActivity.this, MyMechanics.class);
+            Intent intent1 = new Intent(MainActivity.this, EmployeeDetails.class);
             startActivity(intent1);
             finish();
         });
 
         prices.setOnClickListener(view -> {
-            Intent intent1 = new Intent(MainActivity.this, MyPrices.class);
+            Intent intent1 = new Intent(MainActivity.this, AddEmployees.class);
             startActivity(intent1);
             finish();
         });
 
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.addAuthStateListener(authStateListener);
+
+
 
     }
 
-    private void initializeListView() {
-        reference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-            }
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+    private void initGoogleSignInClient() {
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions
+                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .build();
+        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
     }
+
+    private User getUserFromIntent() {
+        return (User) getIntent().getSerializableExtra(USER);
+    }
+
+    FirebaseAuth.AuthStateListener authStateListener = firebaseAuth -> {
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        if (firebaseUser == null) {
+            Intent intent = new Intent(MainActivity.this, Signup.class);
+            startActivity(intent);
+        } if (firebaseUser!= null ) {
+
+        }
+    };
 
 
     @Override
     protected void onStart() {
         super.onStart();
+        firebaseAuth.addAuthStateListener(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        firebaseAuth.removeAuthStateListener(this);
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_logout:
-                FirebaseAuth.getInstance();
-                Intent intent = new Intent(MainActivity.this, Login.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
-                return true;
-            case R.id.nav_account:
-                Intent intent1 = new Intent(MainActivity.this, AdminProfile.class);
-                startActivity(intent1);
-                finish();
-            default:
-                return super.onOptionsItemSelected(item);
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.my_drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+        if (id == R.id.nav_home) {
+
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navigation_menu, menu);
+        getMenuInflater().inflate(R.menu.navigation_menu, menu) ;
         return true;
     }
 
@@ -210,4 +222,48 @@ public class MainActivity extends AppCompatActivity{
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser == null) {
+            goToAuthInActivity();
+        }
+    }
+
+    private void goToAuthInActivity() {
+        Intent intent = new Intent(MainActivity.this, Signup.class);
+        startActivity(intent);
+    }
+
+    private void signOut() {
+        singOutFirebase();
+        signOutGoogle();
+    }
+
+    private void signOutGoogle() {
+        googleSignInClient.signOut();
+    }
+
+    private void singOutFirebase() {
+        firebaseAuth.signOut();
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId() ;
+        if (id == R.id. nav_settings ) {
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);        } else if (id == R.id. nav_account ) {
+            Intent intent = new Intent(MainActivity.this, MyGarage.class);
+            startActivity(intent);
+        } else if (id == R.id. nav_logout ) {
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
+        }
+        DrawerLayout drawer = findViewById(R.id.my_drawer_layout ) ;
+        drawer.close();
+        return true;
+    }
 }

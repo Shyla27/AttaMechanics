@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/background"
+    android:background="@color/white"
     tools:context=".Admin.AdminProfile">
 
 
-
-    <include
-        layout="@layout/layout_profile"/>
+    <include layout="@layout/layout_admin_profile" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -20,7 +18,12 @@
         app:itemBackground="@color/primary"
         app:itemIconTint="@android:color/background_dark"
         app:itemTextColor="@android:color/background_dark"
-        app:menu="@menu/bottomnavbarmechs"
-        tools:ignore="NotSibling" />
+        app:menu="@menu/bottom_nav_menu"
+        tools:ignore="NotSibling"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        android:foreground="?attr/selectableItemBackground"
+        app:elevation="10dp"
+        app:labelVisibilityMode="labeled" />
 
 </RelativeLayout>

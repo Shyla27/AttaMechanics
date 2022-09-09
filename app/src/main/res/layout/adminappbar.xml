@@ -3,110 +3,230 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:showIn="@layout/app_bar_main"
     android:layout_height="match_parent">
 
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="10dp">
+        android:layout_height="match_parent">
+
+
+
 
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="8dp"
+                android:id="@+id/cardteam">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardBackgroundColor="@color/primary"
-                    android:minHeight="200dp"
-                    android:layout_alignParentTop="true">
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        app:srcCompat="@drawable/team"
+                        android:contentDescription="@string/app_name"
+                        />
 
-                    <LinearLayout android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:gravity="center_vertical">
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        android:orientation="vertical"
+                        android:background="@color/background"
+                        android:padding="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:orientation="vertical"
-                            android:layout_weight="1">
+                            android:text="My Team"
+                            android:textColor="@color/primary"/>
 
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="8dp"
+                android:id="@+id/appointments">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        app:srcCompat="@drawable/appointment"
+                        android:contentDescription="@string/app_name"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@color/background"
+                        android:padding="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Appointments"
+                            android:textColor="@color/primary"/>
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="8dp"
+                    android:id="@+id/myPrices">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            app:srcCompat="@drawable/prices"
+                            android:contentDescription="@string/app_name"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@color/background"
+                            android:padding="10dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Welcome  to \n Atta Mechanics"
-                                android:textColor="@color/white"
-                                android:textStyle="bold" android:textSize="20sp"/>
+                                android:text="Atta Pay"
+                                android:textColor="@color/primary"/>
 
-                            <TextView android:layout_marginTop="15dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Easy Does it"
-                                android:textColor="@color/white"
-                                android:textStyle="bold"
-                                android:textSize="13sp"/>
+
 
                         </LinearLayout>
-                        <ImageView android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:cropToPadding="true"
-                            android:src="@drawable/atta"
-                            android:elevation="44dp"/>
-
                     </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="8dp"
+                    android:id="@+id/carService">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            app:srcCompat="@drawable/garage"
+                            android:contentDescription="@string/app_name"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@color/background"
+                            android:padding="10dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Car Services"
+                                android:textColor="@color/primary"/>
 
 
-                </androidx.cardview.widget.CardView>
 
-                <include
-                    layout="@layout/layout_home"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
 
-            <Button
-                android:id="@+id/myTeam"
-                style="@style/loginButton"
-                android:text="My Team"
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
 
-                android:fontFamily="@font/nunito_sans_light"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/loginViewsMargin"/>
-            <Button
-                android:id="@+id/appointments"
-                style="@style/loginButton"
-                android:text="Check Appointment"
+                    android:layout_margin="8dp"
+                    android:id="@+id/carTypes">
 
-                android:fontFamily="@font/nunito_sans_light"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/loginViewsMargin"/>
-            <Button
-                android:id="@+id/myPrices"
-                style="@style/loginButton"
-                android:text="My Prices"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            app:srcCompat="@drawable/service"
+                            android:contentDescription="@string/app_name"
+                            />
 
-                android:fontFamily="@font/nunito_sans_light"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/loginViewsMargin"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@color/background"
+                            android:padding="10dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Atta Car Types"
+                                android:textColor="@color/primary"/>
 
-            <Button
-                android:id="@+id/carService"
-                style="@style/loginButton"
-                android:text="Car Services"
 
-                android:fontFamily="@font/nunito_sans_light"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+
+
+
+
+
 
         </LinearLayout>
 

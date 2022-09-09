@@ -6,22 +6,37 @@ import android.os.Parcelable;
 public  class GaragesAdapter implements Parcelable {
 
     private String garagename;
-    private String speciality;
     private String officenumber;
-    private String latitude;
-    private String longitude;
     private String garageId;
     private String idnumber;
+    private  String description;
 
 
-    public GaragesAdapter(String garagename, String speciality, String officenumber, String latitude, String longitude, String garageId) {
+    public GaragesAdapter(String garagename,  String officenumber, String garageId) {
         this.garagename = garagename;
-        this.speciality = speciality;
         this.officenumber = officenumber;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.garageId = garageId;
+        this.description = description;
+
+    }
+
+
+    public GaragesAdapter(String garageID, String idnumber) {
         this.idnumber = idnumber;
+    }
+
+    public GaragesAdapter (String description){
+        this.description= description;
+    }
+
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String garageId() {
@@ -38,11 +53,8 @@ public  GaragesAdapter(String id, String s, String specialit, String garageID, S
 
     protected GaragesAdapter(Parcel in) {
         garagename = in.readString();
-        speciality = in.readString();
         officenumber = in.readString();
-        latitude = in.readString();
         idnumber = in.readString();
-        longitude = in.readString();
     }
 
     public static final Creator<GaragesAdapter> CREATOR = new Creator<GaragesAdapter>() {
@@ -65,25 +77,6 @@ public  GaragesAdapter(String id, String s, String specialit, String garageID, S
         return officenumber;
     }
 
-    public String getSpeciality() {
-        return speciality;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
 
     public String getIdnumber() {
         return idnumber;
@@ -101,11 +94,6 @@ public  GaragesAdapter(String id, String s, String specialit, String garageID, S
     public void setOfficenumber(String officenumber) {
         this.officenumber = officenumber;
     }
-
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -115,10 +103,7 @@ public  GaragesAdapter(String id, String s, String specialit, String garageID, S
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(garagename);
         parcel.writeString(garageId);
-        parcel.writeString(speciality);
         parcel.writeString(officenumber);
-        parcel.writeString(latitude);
         parcel.writeString(idnumber);
-        parcel.writeString(longitude);
     }
 }

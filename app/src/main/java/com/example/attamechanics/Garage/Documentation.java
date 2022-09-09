@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.attamechanics.Adapters.Admin;
 import com.example.attamechanics.Adapters.GaragesAdapter;
 import com.example.attamechanics.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,6 +49,7 @@ public class Documentation extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     private static final int REQUEST_LOCATION = 1;
     private String garageID;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +64,10 @@ public class Documentation extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         uploadcert = findViewById(R.id.uploadcert);
         storage = FirebaseStorage.getInstance();
+        auth = FirebaseAuth.getInstance();
         storageReference = storage.getReference();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("garagedets");
+        databaseReference = firebaseDatabase.getReference("GarageInfo/Garages");
         uploadcert.setOnClickListener(view ->UploadCert());
 
         btnSelect.setOnClickListener(view -> SelectImage());
@@ -85,10 +88,15 @@ public class Documentation extends AppCompatActivity {
                 return;
             }
             progressBar.setVisibility(View.VISIBLE);
-            garageID = idnum;
+            GaragesAdapter garagesAdapter = new GaragesAdapter(garageID,idnum);
+
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    String user_id = auth.getCurrentUser().getUid();
+                    DatabaseReference current_user_id = databaseReference.child(user_id);
+                    current_user_id.child("IDNumber").setValue(idnum);
 
                     Toast.makeText(getApplicationContext(), "Documents under review.You will be notified to create a garage account", Toast.LENGTH_SHORT).show();
 
@@ -113,11 +121,13 @@ public class Documentation extends AppCompatActivity {
             progressDialog.show();
 
             StorageReference ref = storageReference.child("images/National ID/" + UUID.randomUUID().toString());
+                    //randomUUID().toString());
 
             ref.putFile(filepath)
                     .addOnSuccessListener(
                             taskSnapshot -> {
                                 progressDialog.dismiss();
+
                                 Toast.makeText(Documentation.this,
                                         "Image Uploaded!!", Toast.LENGTH_SHORT).show();
                             }

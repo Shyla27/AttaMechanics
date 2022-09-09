@@ -30,7 +30,7 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/idFABAddCourse"
+        android:id="@+id/addMech"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -53,7 +53,14 @@
         app:itemIconTint="@android:color/background_dark"
         app:itemTextColor="@android:color/background_dark"
         app:menu="@menu/bottom_nav_menu"
-        tools:ignore="NotSibling" />
+        tools:ignore="NotSibling"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        android:foreground="?attr/selectableItemBackground"
+        app:elevation="10dp"
+        app:labelVisibilityMode="labeled"/>
+
+
 </RelativeLayout>
 
 

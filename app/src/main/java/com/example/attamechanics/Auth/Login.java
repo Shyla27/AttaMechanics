@@ -1,53 +1,105 @@
 package com.example.attamechanics.Auth;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static com.example.attamechanics.Utils.Constants.USERS;
+import static com.example.attamechanics.Utils.HelperClass.logErrorMessage;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelProvider;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.attamechanics.Adapters.GlobalUser;
+import com.example.attamechanics.Adapters.User;
 import com.example.attamechanics.MainActivity;
 import com.example.attamechanics.Mechs.MechanicsDashboard;
 import com.example.attamechanics.R;
+import com.example.attamechanics.ViewModel.LogInViewModel;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
+@SuppressWarnings("ConstantConditions")
 public class Login extends AppCompatActivity {
 
-
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private User user = new User();
+    private FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+    private CollectionReference usersRef = rootRef.collection(USERS);
     private EditText inputEmail;
     private EditText inputPassword;
+    private Button btn_logIn;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
+    private FirebaseAuth.AuthStateListener authStateListener;
     DatabaseReference admindatabase , mechsdatabase;
     FirebaseDatabase firebaseDatabase;
     private String type;
+    LogInViewModel logInViewModel;
+    String emailLog;
+    String pwdLog;
+    TextView textToSignUp;
+    FirebaseUser currentUser;
+    FrameLayout frameLayoutLogin;
+    TextView tv_forgetPassword, btn_signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+          FirebaseUser user = auth.getCurrentUser();
+          if (user != null) {
+              Intent intent = new Intent(Login.this, MainActivity.class);
+              startActivity(intent);
+              finish();
+          }
+            }
+        };
+
+
         inputEmail = findViewById(R.id.email);
         inputPassword = findViewById(R.id.password);
         progressBar = findViewById(R.id.progressBar);
-        TextView btnSignup = findViewById(R.id.btn_signup);
-        Button btnLogin = findViewById(R.id.btn_login);
+        btn_signup = findViewById(R.id.btn_signup);
+        btn_logIn = findViewById(R.id.btn_login);
         TextView btnReset = findViewById(R.id.btn_reset_password);
         Spinner userType = findViewById(R.id.userType);
         firebaseDatabase = FirebaseDatabase.getInstance();
+        logInViewModel = new ViewModelProvider(this, (ViewModelProvider.Factory) ViewModelProvider.AndroidViewModelFactory
+                .getInstance(getApplication()))
+                .get(LogInViewModel.class);
 
         List<String> list = new ArrayList<>();
         list.add("Select Account Type");
@@ -56,6 +108,8 @@ public class Login extends AppCompatActivity {
 
         ArrayAdapter adapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, list);
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+
+
         userType.setAdapter(adapter);
         userType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -84,23 +138,29 @@ public class Login extends AppCompatActivity {
         });
 
         auth = FirebaseAuth.getInstance();
+        listener();
 
 
-        btnSignup.setOnClickListener(view -> startActivity(new Intent(Login.this,Signup.class)));
+     //   btn_signup.setOnClickListener(view -> startActivity(new Intent(Login.this,Signup.class)));
 
         btnReset.setOnClickListener(view -> startActivity(new Intent(Login.this, ForgotPassword.class)));
 
-        btnLogin.setOnClickListener(view -> {
-            String email = inputEmail.getText().toString();
-            final String password = inputPassword.getText().toString();
+        btn_logIn.setOnClickListener(view -> {
+            String email = inputEmail.getText().toString().trim();
+            final String password = inputPassword.getText().toString().trim();
 
             if (TextUtils.isEmpty(email)) {
-                Toast.makeText(getApplicationContext(), "Enter email address! ", Toast.LENGTH_SHORT).show();
-                return;
+               // Toast.makeText(getApplicationContext(), "Enter email address! ", Toast.LENGTH_SHORT).show();
+
+               inputEmail.setError( "Enter email address! ");
+               return;
             }
             if (TextUtils.isEmpty(password)) {
-                Toast.makeText(getApplicationContext(), "Enter Password!" , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Enter Password!" , Toast.LENGTH_SHORT).show();
+               inputPassword.setError("Enter Password!");
                 return;
+            } else {
+
             }
             progressBar.setVisibility(View.VISIBLE);
             auth.signInWithEmailAndPassword(email, password)
@@ -108,7 +168,20 @@ public class Login extends AppCompatActivity {
                         chooseUser();
                         progressBar.setVisibility(View.VISIBLE);
                         if (task.isSuccessful()) {
-                            chooseUser();
+                        FirebaseDatabase.getInstance().getReference("User")
+                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        GlobalUser.currentuser = (com.example.attamechanics.Adapters.User) snapshot.getValue();
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
                         }
                         else if (!task.isSuccessful()) {
                             if (password.length() < 6 ) {
@@ -120,7 +193,97 @@ public class Login extends AppCompatActivity {
         });
 
 
+
     }
+    MutableLiveData<User> checkIfUserIsAuthenticatedInFirebase() {
+        MutableLiveData<User> isUserAuthenticateInFirebaseMutableLiveData = new MutableLiveData<>();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser == null) {
+            user.isAuthenticated = false;
+            isUserAuthenticateInFirebaseMutableLiveData.setValue(user);
+        } else {
+            user.uid = firebaseUser.getUid();
+            user.isAuthenticated = true;
+            isUserAuthenticateInFirebaseMutableLiveData.setValue(user);
+        }
+        return isUserAuthenticateInFirebaseMutableLiveData;
+    }
+
+    MutableLiveData<User> addUserToLiveData(String uid) {
+        MutableLiveData<User> userMutableLiveData = new MutableLiveData<>();
+        usersRef.document(uid).get().addOnCompleteListener(userTask -> {
+            if (userTask.isSuccessful()) {
+                DocumentSnapshot document = userTask.getResult();
+                if(document.exists()) {
+                    User user = document.toObject(User.class);
+                    userMutableLiveData.setValue(user);
+                }
+            } else {
+                logErrorMessage(userTask.getException().getMessage());
+            }
+        });
+        return userMutableLiveData;
+    }
+
+    private void listener() {
+
+        final AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
+
+        btn_logIn.setOnClickListener(v -> {
+            inputEmail.clearFocus();
+            inputPassword.clearFocus();
+            v.startAnimation(buttonClick);
+            dismissKeyboard();
+            emailLog = inputEmail.getText().toString();
+            pwdLog = inputPassword.getText().toString();
+
+            if ((pwdLog.isEmpty() && emailLog.isEmpty())) {
+                Toast.makeText(Login.this, "Fields are empty!", Toast.LENGTH_SHORT).show();
+                inputEmail.requestFocus();
+            } else if (emailLog.isEmpty()) {
+                inputEmail.setError("Please enter your Email Id.");
+                inputEmail.requestFocus();
+            } else if (pwdLog.isEmpty()) {
+                inputPassword.setError("Please enter your password.");
+                inputPassword.requestFocus();
+            } else {
+
+                inputEmail.setClickable(false);
+                inputPassword.setClickable(false);
+                inputEmail.setClickable(false);
+                btn_logIn.setClickable(true);
+                progressBar.setVisibility(View.VISIBLE);
+
+            }
+
+        });
+
+        btn_signup.setOnClickListener(v -> {
+            Intent intent = new Intent(getBaseContext(), Signup.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+            finish();
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(authStateListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        auth.removeAuthStateListener(authStateListener);
+    }
+    private void dismissKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        assert imm != null;
+        imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
+    }
+
+
 
     private void chooseUser() {
         if (verifyType())
@@ -150,4 +313,6 @@ public class Login extends AppCompatActivity {
         return false;
 
     }
+
+
 }

@@ -3,13 +3,18 @@ package com.example.attamechanics.Garage;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.example.attamechanics.Adapters.GarageSpecialityAdapter;
+import com.example.attamechanics.Auth.Signup;
 import com.example.attamechanics.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,16 +26,19 @@ public class GarageSpeciality extends AppCompatActivity {
     CheckBox c1,c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
+    FirebaseAuth mAuth;
     GarageSpecialityAdapter garageSpecialityAdapter;
-    int i = 0;
-
+    int in = 0;
+    CheckBox c;
+    String SaveString="No";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage_speciality);
 
-        databaseReference = database.getInstance().getReference().child("Speciality");
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference().child("Specialities");
 
         garageSpecialityAdapter = new GarageSpecialityAdapter();
 
@@ -86,7 +94,9 @@ public class GarageSpeciality extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-            i = (int) snapshot.getChildrenCount();
+                if (snapshot.exists()){
+                    in = (int) snapshot.getChildrenCount();
+                }
             }
 
             @Override
@@ -94,174 +104,188 @@ public class GarageSpeciality extends AppCompatActivity {
 
             }
         });
-
-        savecontent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (c1.isChecked()) {
-                garageSpecialityAdapter.setSpeciality(s1);
-                databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-                } else {
-
-                }
-                if (c2.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s2);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
+//
+//        c1.setOnCheckedChangeListener((compoundButton, b) -> {
+//            if (b) {
+//                SaveString="Yes";
+//            }
+//            else
+//            {
+//                SaveString="No";
+//            }
+//        });
 
 
-                } else {
+        savecontent.setOnClickListener(view -> {
+//            String user_id = mAuth.getCurrentUser().getUid();
+//            DatabaseReference current_user_db = databaseReference.child(user_id);
 
-                }
-                if (c3.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s3);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-
-                } else {
-
-                }
-                if (c4.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s4);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c5.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s5);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c6.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s6);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }  if (c7.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s7);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c8.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s8);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c9.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s9);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c10.isChecked()) { garageSpecialityAdapter.setSpeciality(s10);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c11.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s11);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c12.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s12);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c13.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s13);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c14.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s14);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-
-                if (c15.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s15);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-
-                if (c16.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s16);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c17.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s17);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c18.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s18);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-
-                if (c19.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s19);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c20.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s20);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c21.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s21);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
-                if (c22.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s22);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }  if (c23.isChecked()) {
-                    garageSpecialityAdapter.setSpeciality(s23);
-                    databaseReference.child(String.valueOf(i+i)).setValue(garageSpecialityAdapter);
-
-                } else {
-
-                }
+            if (c1.isChecked()) {
+            garageSpecialityAdapter.setSpeciality(s1);
+            databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+            } else {
 
             }
+            if (c2.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s2);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+
+            } else {
+
+            }
+            if (c3.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s3);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+
+            } else {
+
+            }
+            if (c4.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s4);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c5.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s5);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c6.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s6);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }  if (c7.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s7);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c8.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s8);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c9.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s9);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c10.isChecked()) { garageSpecialityAdapter.setSpeciality(s10);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c11.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s11);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c12.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s12);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c13.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s13);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c14.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s14);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+
+            if (c15.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s15);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+
+            if (c16.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s16);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c17.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s17);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c18.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s18);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+
+            if (c19.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s19);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c20.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s20);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c21.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s21);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+            if (c22.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s22);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }  if (c23.isChecked()) {
+                garageSpecialityAdapter.setSpeciality(s23);
+                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+
+            } else {
+
+            }
+
+
+            Intent i = new Intent(getBaseContext(), Signup.class);
+            startActivity(i);
         });
 
     }
