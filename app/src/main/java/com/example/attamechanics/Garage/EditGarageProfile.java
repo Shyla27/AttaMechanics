@@ -1,5 +1,6 @@
 package com.example.attamechanics.Garage;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,16 +10,22 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.attamechanics.Adapters.GaragesAdapter;
 import com.example.attamechanics.Auth.Signup;
 import com.example.attamechanics.MainActivity;
 import com.example.attamechanics.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -36,6 +43,8 @@ public class EditGarageProfile extends AppCompatActivity {
     StorageReference storageReference;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
+    FirebaseAuth auth;
+
     private ImageView imageView;
     private Uri filepath;
     private final int PICK_IMAGE_REQUEST = 22;
@@ -53,8 +62,9 @@ public class EditGarageProfile extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         addlogo = findViewById(R.id.addlogo);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("garagedets");
+        databaseReference = firebaseDatabase.getReference("GarageInfo/Garages");
         storage = FirebaseStorage.getInstance();
+        auth = FirebaseAuth.getInstance();
         storageReference = storage.getReference();
         chooseimages.setOnClickListener(view ->ChooseImages());
         uploadimages.setOnClickListener(view -> UploadGarageImage());
@@ -62,7 +72,33 @@ public class EditGarageProfile extends AppCompatActivity {
         profile_image.setOnClickListener(view -> UploadLogo());
         addlogo.setOnClickListener(view -> ChoseLogo());
 
-        proceedtohome.setOnClickListener(view -> startActivity(new Intent(EditGarageProfile.this, Signup.class)));
+        proceedtohome.setOnClickListener(view -> {
+        String  descript = description.getText().toString().trim();
+            if (TextUtils.isEmpty(descript)) {
+                Toast.makeText(getApplicationContext(), "Tell us more about your garage", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            GaragesAdapter garagesAdapter = new GaragesAdapter(descript);
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    String user_id = auth.getCurrentUser().getUid();
+                    DatabaseReference current_user_id = databaseReference.child(user_id);
+                    current_user_id.child("Description").setValue(descript);
+
+                    Intent i = new Intent(EditGarageProfile.this, GarageSpeciality.class);
+                    startActivity(i);
+                    finish();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        });
 
 
 

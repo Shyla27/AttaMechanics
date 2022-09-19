@@ -104,7 +104,7 @@ public class EditAppointment extends AppCompatActivity {
         // displaying a toast message on below line.
         Toast.makeText(this, "Appointment Deleted..", Toast.LENGTH_SHORT).show();
         // opening a main activity on below line.
-        startActivity(new Intent(EditAppointment.this, Appointments.class));
+        startActivity(new Intent(EditAppointment.this, MyTasks.class));
 
     }
 }

@@ -211,7 +211,7 @@
         style="@style/loginButton"
         android:text="Save Specialities"
 
-        android:fontFamily="@font/nunito_sans_light"
+        android:fontFamily="@fonts/nunito_sans_light"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/loginViewsMargin"/>
 

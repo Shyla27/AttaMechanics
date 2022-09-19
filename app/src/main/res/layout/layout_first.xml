@@ -17,10 +17,10 @@
         android:padding="@dimen/loginViewsMargin">
 
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             style="@style/headerTextPrimary"
             android:text="Welcome to Atta"
-            android:fontFamily="@font/comfortaa_bold"
+            android:fontFamily="@fonts/comfortaa_bold"
             android:textSize="30dp"
             android:layout_marginTop="@dimen/loginCardRadius"/>
 
@@ -60,20 +60,28 @@
                 android:background="@color/background" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp">
 
-        <TextView
-            android:id="@+id/adduser"
+        </Space>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/idBtnLogin"
-            android:layout_marginTop="60dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Login as user"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mechanicsignup"
+                style="@style/loginButton"
+                android:text="Continue as Mechanic "
+                android:textColor="#FAFAFA"
+                android:background="@color/background" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

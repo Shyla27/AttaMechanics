@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     android:background="@color/white"
     tools:context=".Auth.Signup">
@@ -19,19 +20,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="60dp"
                 android:layout_alignParentTop="true"
                 android:weightSum="2">
 
                 <LinearLayout
                     style="@style/parent"
-                    android:background="@drawable/login_shape_bk"
                     android:orientation="vertical"
                     android:layout_weight="3">
 
                     <ImageView
-                        style="@style/parent"
-                        android:background="@drawable/ic_login_bk"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@color/primary"
                         android:contentDescription="login background" />
 
                 </LinearLayout>
@@ -49,31 +50,25 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="80dp"
+                    android:layout_height="50dp"
                     style="@style/headerText"
                     android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/atta"/>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:showDividers="middle"
+                    android:layout_gravity="center"
                     android:divider="@drawable/empty_tall_divider"
-                    android:gravity="center_vertical"
                     android:orientation="vertical"
                     android:padding="@dimen/activity_horizontal_margin"
                     >
 
-                    <Spinner
-                        android:layout_marginTop="5dp"
-                        android:id="@+id/userType"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        >
 
-                    </Spinner>
 
 
 
@@ -186,12 +181,6 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <CheckBox
-                        android:id="@+id/check1"
-                        android:layout_marginTop="1dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="I Agree that the information provided is correct"/>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/sign_up_button"
@@ -200,9 +189,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="@string/action_sign_in_short"
-                        android:fontFamily="@font/nunito_sans_light"
+                        android:fontFamily="@fonts/nunito_sans_light"
                         android:textColor="@color/background"
                         android:textStyle="bold" />
+
+
+
+
 
 
                     <androidx.appcompat.widget.AppCompatButton
@@ -213,7 +206,7 @@
                         style="@style/loginButton"
                         android:text="@string/btn_link_to_login"
                         android:textAllCaps="false"
-                        android:fontFamily="@font/nunito_sans_light"
+                        android:fontFamily="@fonts/nunito_sans_light"
                         android:textColor="@color/background"
                         android:textSize="15dp"
                         />

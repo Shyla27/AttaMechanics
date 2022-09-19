@@ -64,12 +64,12 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="40dp"
                     android:src="@drawable/atta"/>
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="20sp"
-                    android:text="Choose garage  "
-                    android:fontFamily="@font/nunito_sans_light"
+                    android:text="Request Admin To Add You to garage"
+                    android:fontFamily="@fonts/nunito_sans_light"
                     android:textColor="@color/background"
                     />
 
@@ -78,18 +78,28 @@
                     <ListView
                         android:id="@+id/idLVgarages"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp" />
+                        android:layout_height="wrap_content" />
 
 
 
 
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/proceed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_back"
+                    android:background="@color/primary"
                     android:text="Proceed"
+                    android:textAllCaps="false" />
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/skip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary"
+                    android:text="Skip"
                     android:textAllCaps="false" />
 
             </LinearLayout>

@@ -1,71 +1,45 @@
-<FrameLayout xmlns:map="http://schemas.android.com/apk/res-auto"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:openDrawer="start"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.attamechanics.Users.NearbyGarages"
+    android:id="@+id/drawer_layoutmaps"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <include
+        layout="@layout/activity_garage_content"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        tools:context=".Users.NearbyGarages" />
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/driver_main"
+        app:theme="@style/NavigationDrawerStyle" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
+        <TextView
+            android:background="@color/primary"
+            android:id="@+id/logout"
+            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="60dp"
-            android:orientation="horizontal">
+            android:text="Logout"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="10sp"
+            android:drawableTint="@color/white"
+            android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
+            tools:ignore="UnusedAttribute" />
+    </com.google.android.material.navigation.NavigationView>
 
-            <EditText
-                android:id="@+id/TF_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.01"
-                android:ems="10"
-                android:inputType="textPersonName" />
 
-            <Button
-                android:id="@+id/B_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onClick"
-                android:text="Search" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/B_garages"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onClick"
-                android:text="Garages"
-                tools:ignore="UsingOnClickInXml" />
-
-<Space
-    android:layout_width="20dp"
-    android:layout_height="match_parent"/>
-
-            <Button
-                android:id="@+id/B_to"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onClick"
-                android:text="To"
-                tools:ignore="UsingOnClickInXml" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-</FrameLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
 

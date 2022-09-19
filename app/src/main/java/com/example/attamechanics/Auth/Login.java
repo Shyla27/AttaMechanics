@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.example.attamechanics.Adapters.GlobalUser;
 import com.example.attamechanics.Adapters.User;
+import com.example.attamechanics.Admin.AdminDashboard;
 import com.example.attamechanics.MainActivity;
 import com.example.attamechanics.Mechs.MechanicsDashboard;
 import com.example.attamechanics.R;
@@ -76,16 +77,13 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        authStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-          FirebaseUser user = auth.getCurrentUser();
-          if (user != null) {
-              Intent intent = new Intent(Login.this, MainActivity.class);
-              startActivity(intent);
-              finish();
-          }
-            }
+        authStateListener = firebaseAuth -> {
+      FirebaseUser user = auth.getCurrentUser();
+      if (user != null) {
+          Intent intent = new Intent(Login.this, MainActivity.class);
+          startActivity(intent);
+          finish();
+      }
         };
 
 
@@ -97,6 +95,7 @@ public class Login extends AppCompatActivity {
         TextView btnReset = findViewById(R.id.btn_reset_password);
         Spinner userType = findViewById(R.id.userType);
         firebaseDatabase = FirebaseDatabase.getInstance();
+        admindatabase= firebaseDatabase.getReference("Users");
         logInViewModel = new ViewModelProvider(this, (ViewModelProvider.Factory) ViewModelProvider.AndroidViewModelFactory
                 .getInstance(getApplication()))
                 .get(LogInViewModel.class);
@@ -164,6 +163,7 @@ public class Login extends AppCompatActivity {
             }
             progressBar.setVisibility(View.VISIBLE);
             auth.signInWithEmailAndPassword(email, password)
+
                     .addOnCompleteListener(Login.this, task -> {
                         chooseUser();
                         progressBar.setVisibility(View.VISIBLE);
@@ -174,6 +174,7 @@ public class Login extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         GlobalUser.currentuser = (com.example.attamechanics.Adapters.User) snapshot.getValue();
+
                                     }
 
                                     @Override
@@ -181,6 +182,12 @@ public class Login extends AppCompatActivity {
 
                                     }
                                 });
+
+                            String user_id = auth.getCurrentUser().getUid();
+                            DatabaseReference current_user_id = firebaseDatabase.getReference(user_id);
+                            current_user_id.child("contact").setValue(password);
+                            current_user_id.child("email").setValue(email);
+
 
                         }
                         else if (!task.isSuccessful()) {

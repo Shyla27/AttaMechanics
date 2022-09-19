@@ -1,8 +1,11 @@
 package com.example.attamechanics.Admin;
 
+import static com.example.attamechanics.Utils.Constants.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -12,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.attamechanics.Adapters.EmployeeDets;
 import com.example.attamechanics.Adapters.GaragesAdapter;
 import com.example.attamechanics.MainActivity;
 import com.example.attamechanics.Notifications;
@@ -23,8 +27,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -35,6 +42,7 @@ public class MyMechanics extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseDatabase firebaseDatabase;
     private FloatingActionButton addemployee;
+
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -48,7 +56,7 @@ public class MyMechanics extends AppCompatActivity {
         initializeListView(); 
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        reference = FirebaseDatabase.getInstance().getReference().child("MechanicDetails");
+        reference = FirebaseDatabase.getInstance().getReference("GarageInfo/MechanicDetails");
         bottomNavigation = findViewById(R.id.bottom_navigation);
         addemployee = findViewById(R.id.addMech);
 
@@ -75,11 +83,7 @@ public class MyMechanics extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), GoogleMaps.class));
                     overridePendingTransition(0,0);
                     return true;
-                case R.id.notify:
 
-                    startActivity(new Intent(getApplicationContext(), Notifications.class));
-                    overridePendingTransition(0, 0);
-                    return true;
             }
             return false;
         });
@@ -96,43 +100,63 @@ public class MyMechanics extends AppCompatActivity {
 
         // below line is used for getting reference
         // of our Firebase Database.
-        reference = FirebaseDatabase.getInstance().getReference();
 
-        // in below line we are calling method for add child event
-        // listener to get the child of our database.
-        reference.addChildEventListener(new ChildEventListener() {
+        ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Map<String, Object> map = (Map<String, Object>) snapshot.getValue();
-              //  Log.d(TAG, "Value is: " + map);
-//                employeeDets.add(snapshot.getValue(String.class));
-                adapter.notifyDataSetChanged();
-                myMechsLv.setAdapter(adapter);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                employeeDets.remove(snapshot.getValue(String.class));
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String address = ds.child("address").getValue(String.class);
+                    String name = ds.child("name").getValue(String.class);
+                    Log.d("TAG", address + " / " + name);
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
-
+        };
     }
+
+
+//        reference.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//            //    Map<String, Object> map = (Map<String, Object>) snapshot.getValue();
+//              //  Log.d(TAG, "Value is: " + map);
+//        //  employeeDets.add(snapshot.getValue(String.class));
+//                adapter.notifyDataSetChanged();
+//
+//                Map<String, Object> map = (Map<String, Object>) snapshot.getValue();
+//                Log.d(TAG, "Value is: " + map);
+//
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+//                employeeDets.remove(snapshot.getValue(String.class));
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//
+//        myMechsLv.setAdapter(adapter);
+//
+//    }
 
 
     protected void populateView(View view, GaragesAdapter garagesAdapter, int position) {

@@ -136,11 +136,7 @@ public class GoogleMaps extends AppCompatActivity{
                     startActivity(new Intent(getApplicationContext(), GoogleMaps.class));
                     overridePendingTransition(0,0);
                     return true;
-                case R.id.notify:
 
-                    startActivity(new Intent(getApplicationContext(), Notifications.class));
-                    overridePendingTransition(0, 0);
-                    return true;
             }
             return false;
         });

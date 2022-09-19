@@ -21,7 +21,7 @@
         <TextView
             style="@style/headerTextPrimary"
             android:text="Login"
-            android:fontFamily="@font/comfortaa_bold"
+            android:fontFamily="@fonts/comfortaa_bold"
             android:layout_marginTop="@dimen/loginViewsMargin"/>
 
         <Spinner
@@ -65,13 +65,20 @@
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <CheckBox
+            android:id="@+id/check1"
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Remember Me?"/>
         <TextView
             style="@style/viewParent"
             android:layout_gravity="end"
             android:layout_marginTop="10dp"
             android:minHeight="48dp"
             android:id="@+id/btn_reset_password"
-            android:fontFamily="@font/nunito_sans_light"
+            android:fontFamily="@fonts/nunito_sans_light"
             android:text="Forgot Password?"
             android:textColor="@color/background"
             android:textSize="@dimen/newsMoreTextSize"
@@ -79,17 +86,24 @@
 
         <Button
             android:id="@+id/btn_login"
-            style="@style/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@fonts/comfortaa_bold"
             android:text="Login"
-
-            android:fontFamily="@font/nunito_sans_light"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/loginViewsMargin"/>
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/background" />
 
         <TextView
             style="@style/parent"
             android:textAlignment="center"
-            android:fontFamily="@font/nunito_sans_light"
+            android:fontFamily="@fonts/nunito_sans_light"
             android:textColor="@color/primary"
             android:text="@string/login_signup_hint"
             android:id="@+id/btn_signup"

@@ -1,27 +1,50 @@
 package com.example.attamechanics.Adapters;
 
-public class User {
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.PropertyName;
 
-    String username;
-    String email;
+import java.io.Serializable;
+
+public class User implements Serializable {
+
+    @PropertyName("Username")
+    public String name;
+
+    public String uid;
+//   public String name;
+    @SuppressWarnings("WeakerAccess")
+   public String email;
+    @Exclude
+            public boolean isAuthenticated;
+    @Exclude
+            public boolean isNew, isCreated;
+
     String userContactNumber;
     String userPassword;
+
+
+
     public  User() {
 
     }
-    public User(String username, String email) {
-        this.username= username;
+    public User(String name,   String uid, String email) {
+        this.name= name;
         this.email= email;
+        this.uid = uid;
     }
 
-    public User (String username, String email, String userContactNumber, String userPassword) {
-        this.username = username;
+    public User (String name,
+               String email, String userContactNumber, String userPassword) {
+        this.name = name;
         this.email = email;
         this.userContactNumber = userContactNumber;
         this.userPassword = userPassword;
     }
-    public String getUsername() {
-        return username;
+
+
+
+    public String getname() {
+        return name;
     }
 
     public String getUserPassword() {
@@ -40,8 +63,16 @@ public class User {
         return userContactNumber;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setname(String username) {
+        this.name = name;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public void setEmail(String email) {

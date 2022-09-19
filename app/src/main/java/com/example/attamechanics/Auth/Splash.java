@@ -8,8 +8,13 @@ import android.os.Bundle;
 import com.example.attamechanics.Admin.GoogleMaps;
 import com.example.attamechanics.Garage.Documentation;
 import com.example.attamechanics.Garage.EditGarageProfile;
+import com.example.attamechanics.Garage.GarageSpeciality;
 import com.example.attamechanics.Garage.Garageinfo;
+import com.example.attamechanics.MainActivity;
+import com.example.attamechanics.Mechs.MechProfile;
 import com.example.attamechanics.R;
+import com.example.attamechanics.Users.UserDashboard;
+import com.example.attamechanics.Users.UserLogin;
 
 public class Splash extends AppCompatActivity {
 

@@ -1,6 +1,11 @@
 package com.example.attamechanics.Auth;
 
+import static com.example.attamechanics.Utils.Constants.RC_SIGN_IN;
+import static com.example.attamechanics.Utils.HelperClass.logErrorMessage;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -18,10 +23,20 @@ import android.widget.Toast;
 
 import com.example.attamechanics.Adapters.User;
 import com.example.attamechanics.Garage.AllGarages;
-import com.example.attamechanics.Garage.Documentation;
+import com.example.attamechanics.Garage.Garageinfo;
 import com.example.attamechanics.MainActivity;
 import com.example.attamechanics.R;
+import com.example.attamechanics.ViewModel.SignInViewModel;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,6 +48,7 @@ import java.util.Map;
 
 public class Signup extends AppCompatActivity {
 
+    private static final String USER = "FirebaseAuthAppTag";
     ImageView userphoto;
     static int PreReqCode = 1;
     static int REQUESTCODE = 1;
@@ -41,7 +57,7 @@ public class Signup extends AppCompatActivity {
     private DatabaseReference mdatabase;
     String userID;
     FirebaseFirestore fStore;
-    private Spinner userType;
+//    private Spinner userType;
     private String type;
     private EditText inputEmail;
     private EditText inputPassword;
@@ -56,12 +72,16 @@ public class Signup extends AppCompatActivity {
     private static final String USERS = "users";
     private String TAG = "Signup";
     private String memberID;
+
+    private  SignInViewModel authViewModel;
+    private GoogleSignInClient googleSignInClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+
         auth = FirebaseAuth.getInstance();
-        database= FirebaseDatabase.getInstance();
         btnSignIn = findViewById(R.id.sign_in_button);
         btnSignUp = findViewById(R.id.sign_up_button);
         inputEmail = findViewById(R.id.useremail);
@@ -70,9 +90,9 @@ public class Signup extends AppCompatActivity {
         mobilenumber = findViewById(R.id.mobilenumber);
         name = findViewById(R.id.username);
         progressBar = findViewById(R.id.progressBar);
-        userType=(Spinner)findViewById(R.id.userType);
+      //  userType=(Spinner)findViewById(R.id.userType);
         database= FirebaseDatabase.getInstance();
-        mdatabase = database.getReference("users");
+        mdatabase = database.getReference("Users");
 
         List<String> list = new ArrayList<>();
         list.add("Select Account Type");
@@ -81,82 +101,156 @@ public class Signup extends AppCompatActivity {
 
         ArrayAdapter adapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, list);
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        userType.setAdapter(adapter);
-        userType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (adapterView.getItemAtPosition(i).toString().equals("Select Account Type")) {
-
-                    type = adapterView.getItemAtPosition(i).toString();
-                    inputPassword.setEnabled(false);
-                    inputEmail.setEnabled(false);
-                } else if (adapterView.getItemAtPosition(i).toString().equals("Mechanics Details")) {
-                    type = adapterView.getItemAtPosition(i).toString();
-                    inputPassword.setEnabled(true);
-                    inputEmail.setEnabled(true);
-                } else {
-                    type = adapterView.getItemAtPosition(i).toString();
-                    inputEmail.setEnabled(true);
-                    inputPassword.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+//        userType.setAdapter(adapter);
+//        userType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                if (adapterView.getItemAtPosition(i).toString().equals("Select Account Type")) {
+//
+//                    type = adapterView.getItemAtPosition(i).toString();
+//                    inputPassword.setEnabled(false);
+//                    inputEmail.setEnabled(false);
+//                } else if (adapterView.getItemAtPosition(i).toString().equals("Mechanics Details")) {
+//                    type = adapterView.getItemAtPosition(i).toString();
+//                    inputPassword.setEnabled(true);
+//                    inputEmail.setEnabled(true);
+//                } else {
+//                    type = adapterView.getItemAtPosition(i).toString();
+//                    inputEmail.setEnabled(true);
+//                    inputPassword.setEnabled(true);
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
         btnSignIn.setOnClickListener(view -> startActivity(new Intent(Signup.this, Login.class)));
 
         progressBar.setVisibility(View.INVISIBLE);
         auth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-
-
 
 
         btnSignUp.setOnClickListener(view -> {
-                btnSignUp.setVisibility(View.INVISIBLE);
-                progressBar.setVisibility(View.VISIBLE);
-                String fullname = name.getText().toString().trim();
-                String email = inputEmail.getText().toString().trim();
-                String mobilenumber = inputEmail.getText().toString().trim();
-                String password = inputPassword.getText().toString().trim();
-                String confirmpass = confirmpassword.getText().toString().trim();
+                    btnSignUp.setVisibility(View.INVISIBLE);
+                    progressBar.setVisibility(View.VISIBLE);
+                    String fullname = name.getText().toString().trim();
+                    String email = inputEmail.getText().toString().trim();
+                    String mobilenumber = inputEmail.getText().toString().trim();
+                    String password = inputPassword.getText().toString().trim();
+                    String confirmpass = confirmpassword.getText().toString().trim();
 
-                memberID = mobilenumber;
+                    memberID = mobilenumber;
 
 
 
-                if (email.isEmpty() || fullname.isEmpty() || mobilenumber.isEmpty() ||
-                        password.isEmpty() || !password.equals(confirmpass)) {
-                    showMessage("Please Verify all fields");
-                    btnSignUp.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.INVISIBLE);
-                } else {
-                    CreateUserAccount(email, fullname, password, mobilenumber);
+                    if (email.isEmpty() || fullname.isEmpty() || mobilenumber.isEmpty() ||
+                            password.isEmpty() || !password.equals(confirmpass)) {
+                        showMessage("Please Verify all fields");
+                        btnSignUp.setVisibility(View.VISIBLE);
+                        progressBar.setVisibility(View.INVISIBLE);
+                    } else {
+                        CreateUserAccount(email, userID, fullname, password, mobilenumber);
+                    }
                 }
-            }
-           );
+        );
 
 
     }
+//
+//    private void initGoogleSignInClient() {
+//        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions
+//                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestIdToken(getString(R.string.default_web_client_id))
+//                .requestEmail()
+//                .build();
+//
+//        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+//    }
+//
+//    private void initAuthViewModel() {
+//        authViewModel = new ViewModelProvider(this).get(SignInViewModel.class);
+//    }
+//
+//
+//    private void initSignInButton() {
+//        SignInButton googleSignInButton = findViewById(R.id.google_sign_in_button);
+//        googleSignInButton.setOnClickListener(v -> signIn());
+//    }
 
-    private void CreateUserAccount(String email, String fullname, String password, String mobilenumber) {
-        User user = new User(fullname, email);
+    private void signIn() {
+        Intent signInIntent = googleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount googleSignInAccount = task.getResult(ApiException.class);
+                if (googleSignInAccount != null) {
+                    getGoogleAuthCredential(googleSignInAccount);
+                }
+            } catch (ApiException e) {
+                logErrorMessage(e.getMessage());
+            }
+        }
+    }
+
+    private void getGoogleAuthCredential(GoogleSignInAccount googleSignInAccount) {
+        String googleTokenId = googleSignInAccount.getIdToken();
+        AuthCredential googleAuthCredential = GoogleAuthProvider.getCredential(googleTokenId, null);
+        signInWithGoogleAuthCredential(googleAuthCredential);
+    }
+
+    private void signInWithGoogleAuthCredential(AuthCredential googleAuthCredential) {
+        authViewModel.signInWithGoogle(googleAuthCredential);
+        authViewModel.authenticatedUserLiveData.observe(this, authenticatedUser -> {
+            if (authenticatedUser.isNew) {
+                createNewUser(authenticatedUser);
+            } else {
+                goToMainActivity(authenticatedUser);
+            }
+        });
+    }
+
+    private void createNewUser(User authenticatedUser) {
+        authViewModel.createUser(authenticatedUser);
+        authViewModel.createdUserLiveData.observe(this, user -> {
+            if (user.isCreated) {
+                toastMessage(user.name);
+            }
+            goToMainActivity(user);
+        });
+    }
+
+    private void goToMainActivity(User user) {
+      Intent intent = new Intent(Signup.this, MainActivity.class);
+        intent.putExtra(USER, String.valueOf(user));
+        startActivity(intent);
+        finish();
+    }
+
+
+    private void CreateUserAccount(String email, String userID, String fullname, String password, String mobilenumber) {
+        User user = new User(fullname, userID, email);
 
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        showMessage("Account Created");
-                        userID = auth.getCurrentUser().getUid();
-                        Map<String, Object> users = new HashMap<>();
-                        users.put("Name", fullname);
-                        users.put("Email", email);
-                        users.put("password",password);
-                        users.put("mobilenumber", mobilenumber);
-                        updateUI();
+                     String user_id = auth.getCurrentUser().getUid();
+                     DatabaseReference current_user_id = mdatabase.child(user_id);
+                     current_user_id.child("Username").setValue(fullname);
+                     current_user_id.child("contact").setValue(mobilenumber);
+                     current_user_id.child("email").setValue(email);
+                     current_user_id.child("password").setValue(password);
+                        Intent Signup = new Intent(getApplicationContext(), Garageinfo.class);
+                        startActivity(Signup);
+                        finish();
 
                     }
                     else {
@@ -169,34 +263,36 @@ public class Signup extends AppCompatActivity {
 
     }
 
-    public void updateUI() {
-        String keyid = mdatabase.push().getKey();
+//    public void updateUI() {
+//        String keyid = mdatabase.push().getKey();
+//
+//        if (verifyType())
+//
+//            return;
+//        if (type.equals("Mechanic Details")) {
+//            Intent Signup = new Intent(getApplicationContext(), AllGarages.class);
+//            startActivity(Signup);
+//            finish();
+//        }
+//        else if (type.equals("Admin Details")) {
+//            Intent Signup = new Intent(getApplicationContext(), Garageinfo.class);
+//            startActivity(Signup);
+//            finish();
+//        }
+//    }
 
-        if (verifyType())
-
-            return;
-        if (type.equals("Mechanic Details")) {
-            Intent Signup = new Intent(getApplicationContext(), AllGarages.class);
-            startActivity(Signup);
-            finish();
-        }
-        else if (type.equals("Admin Details")) {
-            Intent Signup = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(Signup);
-            finish();
-        }
-    }
-
-    private boolean verifyType() {
-        if (type.equals("Select Account Type"))  {
-            Toast.makeText(this, "Please select account type! " ,Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        return false;
-    }
+//    private boolean verifyType() {
+//        if (type.equals("Select Account Type"))  {
+//            Toast.makeText(this, "Please select account type! " ,Toast.LENGTH_SHORT).show();
+//            return true;
+//        }
+//        return false;
+//    }
 
     private void showMessage(String please_verify_all_fields) {
         Toast.makeText(getApplicationContext(), please_verify_all_fields, Toast.LENGTH_LONG).show();
 
+    }    private void toastMessage(String name) {
+        Toast.makeText(this, "Hi " + name + "!\n" + "Your account was successfully created.", Toast.LENGTH_LONG).show();
     }
-}
+    }

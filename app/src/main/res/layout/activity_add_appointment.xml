@@ -38,15 +38,6 @@
                 android:textColorHint="@color/background"
                 android:textSize="14sp" />
 
-            <CalendarView
-                android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:onClick="onClick"
-                android:selectedWeekBackgroundColor="@color/black"
-                android:weekNumberColor="@color/black"
-                android:weekSeparatorLineColor="@color/primary"
-                tools:ignore="OnClick" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -65,7 +56,7 @@
             app:hintTextColor="@color/background">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/idEdtCarLink"
+                android:id="@+id/cardetails"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
@@ -91,7 +82,7 @@
             app:hintTextColor="@color/background">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/idEdtCourseLink"
+                android:id="@+id/carproblem"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
@@ -104,20 +95,20 @@
 
         <!--edit text for course link-->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tasktoemployee"
+            android:id="@+id/appointmntname"
             style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:hint="Garage  to Work "
+            android:hint="Car Problems in more details"
             android:padding="5dp"
             android:textColorHint="@color/background"
             app:hintTextColor="@color/background">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/assignEmployee"
+                android:id="@+id/carproblemDescription"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"

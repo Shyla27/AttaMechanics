@@ -69,7 +69,7 @@
                     android:layout_height="match_parent"
                     android:textSize="30sp"
                     android:text="Wait for Admin to accept your request"
-                    android:fontFamily="@font/comfortaa_bold"
+                    android:fontFamily="@fonts/comfortaa_bold"
                     android:textColor="@color/background"
                     />
 

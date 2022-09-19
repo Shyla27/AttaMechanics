@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.attamechanics.Adapters.GarageSpecialityAdapter;
 import com.example.attamechanics.Auth.Signup;
+import com.example.attamechanics.MainActivity;
 import com.example.attamechanics.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -284,7 +285,7 @@ public class GarageSpeciality extends AppCompatActivity {
             }
 
 
-            Intent i = new Intent(getBaseContext(), Signup.class);
+            Intent i = new Intent(getBaseContext(), MainActivity.class);
             startActivity(i);
         });
 

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AttaMechanics" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="Theme.AttaMechanics" parent="Theme.MaterialComponents.Light.NoActionBar">
 
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true </item>
@@ -11,16 +11,21 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
 
-    <style name="Theme.AttaMechs.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
     <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeColor">#296D98</item>
+        <item name="boxStrokeColor">@color/background</item>
         <item name="boxStrokeWidth">1dp</item>
     </style>
+    <style name="ToolbarColoredIcon" parent="Theme.AppCompat">
+        <item name="android:textColorSecondary">@color/quantum_grey</item>
+        <item name="android:tint">@color/quantum_grey</item>
+        <item name="android:textColorPrimary">@color/quantum_grey</item>
+        <item name="android:textColorHighlight">@color/quantum_grey</item>
+        <item name="colorControlNormal">@color/quantum_grey</item>
+    </style>
 
-
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="android:colorControlActivated" tools:targetApi="lollipop">#4BCF51</item>
+    </style>
     <!--designs for login and register-->
     <style name="parent">
         <item name="android:layout_width">match_parent</item>
@@ -37,12 +42,6 @@
     </style>
 
 
-    <style name="loginParent" parent="parent">
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/loginBkColor</item>
-        <item name="android:focusableInTouchMode">true</item>
-    </style>
-
     <style name="headerText" parent="parent">
         <item name="android:textSize">@dimen/headerTextSize</item>
         <item name="android:textAlignment">center</item>
@@ -56,19 +55,32 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+
+    <style name="NavigationDrawerStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">thin</item>
+        <item name="android:listPreferredItemHeightSmall">60dp</item><!-- item size in menu-->
+        <item name="listPreferredItemHeightSmall">60dp</item><!-- item size in menu-->
+    </style>
+
     <style name="headerTextPrimary" parent="headerText">
-        <item name="fontFamily"> @font/comfortaa_bold</item>
+        <item name="fontFamily"> @fonts/comfortaa_bold</item>
         <item name="android:textColor">@color/background</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
-
-    <style name="modifiedEditText" parent="parent">
-        <item name="android:textSize">@dimen/newsMoreTextSize</item>
-        <item name="fontFamily">@font/nunito_sans_light</item>
+    <style name="MenuStyle" parent="Theme.AppCompat.Light">
+        <item name="android:background">@android:color/white</item>
     </style>
+    <style name="DimDisabled" parent="Theme.AppCompat.Dialog">
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:backgroundDimAmount">0</item>
+        <item name="android:dialogMessage">md</item>
+    </style>
+
 
     <style name="viewParent">
         <item name="android:layout_width">wrap_content</item>
@@ -79,11 +91,26 @@
         <item name="android:background">@drawable/login_shape_bk</item>
         <item name="android:textColor">@color/whiteTextColor</item>
         <item name="android:textStyle">bold</item>
+        <item name="backgroundColor">@color/background</item>
     </style>
 
-    <style name="viewParent.headerText">
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">@dimen/headerTextSize</item>
-        <item name="android:textStyle">bold</item>
+    <style name="TextLabelDark" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/background</item>
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/background</item>
+        <item name="colorControlNormal">@color/black</item>
+        <item name="colorControlActivated">@color/background</item>
+        <item name="android:textColorLink">@color/background</item>
     </style>
+
+    <style name="WhiteThemeAlertDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="colorAccent">@color/primary</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColorSecondary">@color/background</item>
+    </style>
+
 </resources>

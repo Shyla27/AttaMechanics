@@ -8,17 +8,16 @@
 
     <!--colors for modern ui-->
     <color name="whiteTextColor">#fff</color>
-    <color name="primaryTextColor">#00a5ff</color>
-    <color name="loginBkColor">#f0f0f0</color>
 
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
+    <color name="colorDivider">#ECECEC</color>
 
-    <color name="hintTextColor">#C8D4D6</color>
     <color name="headerTextColor">#ECE3E3</color>
-    <color name="headerBackground">#240b36</color>
-    <color name="profileBackground">#FFFFFF</color>
-    <color name="profileTextBackground">#F0F2F4</color>
-    <color name="textColor">#FFFFFF</color>
-    <color name="linkTextColor">#C8DCE9</color>
+
+<color name="primaryTextColor">#FF6600</color>
+    <color name="colorToastInfo">#1E88E5</color>
+    <color name="colorToastSuccess">#47B84C</color>
+    <color name="colorToastWarning">#FFB300</color>
+    <color name="colorToastError">#E53935</color>
 </resources>

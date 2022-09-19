@@ -3,14 +3,35 @@ package com.example.attamechanics.Adapters;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public  class GaragesAdapter implements Parcelable {
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.PropertyName;
 
-    private String garagename;
-    private String officenumber;
-    private String garageId;
-    private String idnumber;
-    private  String description;
+import java.io.Serializable;
 
+@IgnoreExtraProperties
+public  class GaragesAdapter implements Parcelable, Serializable {
+
+
+    @PropertyName("Username")
+    public String garagename;
+    public String garageId;
+    public String idnumber;
+    public   String description;
+    public String uid;
+    //   public String name;
+    @SuppressWarnings("WeakerAccess")
+    public String officenumber;
+    @Exclude
+    public boolean isAuthenticated;
+    @Exclude
+    public boolean isNew, isCreated;
+
+
+
+public GaragesAdapter() {
+
+}
 
     public GaragesAdapter(String garagename,  String officenumber, String garageId) {
         this.garagename = garagename;

@@ -1,6 +1,5 @@
 package com.example.attamechanics.Users;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,14 +8,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.attamechanics.Admin.AddAppointment;
-import com.example.attamechanics.Admin.EditAppointment;
-import com.example.attamechanics.Admin.GoogleMaps;
 import com.example.attamechanics.Garage.AllGarages;
 import com.example.attamechanics.R;
 import com.google.android.material.navigation.NavigationView;
@@ -32,8 +26,8 @@ public class UserDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
-        bookappointment = findViewById(R.id.bookappointment);
-        getservice = findViewById(R.id.getservice);
+        bookappointment = findViewById(R.id.checktasks);
+        getservice = findViewById(R.id.mechrequestservice);
         navigationView = findViewById(R.id.navview);
         drawerLayout = findViewById(R.id.drawer);
 

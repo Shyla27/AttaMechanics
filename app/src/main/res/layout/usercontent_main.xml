@@ -22,7 +22,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    app:cardCornerRadius="16dp"
+                    app:cardCornerRadius="2dp"
                     app:cardPreventCornerOverlap="false"
                     app:cardBackgroundColor="@color/primary"
                     android:minHeight="200dp"
@@ -70,54 +70,28 @@
             </RelativeLayout>
 
 
-            <RelativeLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
-
-                <TextView
-                    style="@style/viewParent.headerText"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:text="Services" />
-
-                <TextView
-                    android:layout_alignParentRight="true"
-                    style="@style/viewParent"
-                    android:text="See All"
-                    android:layout_centerVertical="true"
-                    android:textSize="16sp"
-                    android:textColor="@color/primary"
-                    android:textStyle="bold"/>
-            </RelativeLayout>
 
 
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                <include layout="@layout/card_top_services"/>
-                <include layout="@layout/card_top_services"/>
-
-
-            </LinearLayout>
-
-
-            <Button
-                android:id="@+id/bookappointment"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/checktasks"
                 style="@style/loginButton"
-                android:text="Book Appointment"
+                android:text="Check Tasks"
 
-                android:fontFamily="@font/nunito_sans_light"
+                android:fontFamily="@fonts/nunito_sans_light"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/loginViewsMargin"/>
 
 
-            <Button
-                android:id="@+id/getservice"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mechrequestservice"
                 style="@style/loginButton"
-                android:text="Get Service Now"
+                android:text="Request To Join Garage"
 
-                android:fontFamily="@font/nunito_sans_light"
+                android:fontFamily="@fonts/nunito_sans_light"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+
 
         </LinearLayout>
 

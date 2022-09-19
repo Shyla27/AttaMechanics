@@ -16,12 +16,6 @@
         android:title="Nearby"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/notify"
-        android:enabled="true"
-        android:icon="@drawable/ic_search"
-        android:title="Search"
-        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/notificationsmechs"

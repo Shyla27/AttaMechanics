@@ -36,7 +36,7 @@ public class TeamLVAdapter  extends ArrayAdapter<EmployeeDets> {
         TextView nameTV = listitemView.findViewById(R.id.idTVtext);
         ImageView courseIV = listitemView.findViewById(R.id.idIVimage);
         nameTV.setText(employeeDets.getEmployeename());
-        Picasso.get().load(employeeDets.getImgUrl()).into(courseIV);
+      //  Picasso.get().load(employeeDets.getImgUrl()).into(courseIV);
         listitemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

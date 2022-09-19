@@ -7,6 +7,9 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable-v24/background_newtask.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable-v24/background_textview_2.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable-v24/circularsolid.xml" value="0.19" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable-v24/ic_add_white_24dp.xml" value="0.245" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable-v24/ic_complete.xml" value="0.1825" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable-v24/ic_employee.xml" value="0.245" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable-v24/ic_login_bk.xml" value="0.2775" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/bacround_gradient.xml" value="0.116" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/button_back.xml" value="0.1075" />
@@ -15,22 +18,29 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/circularsolidprimary.xml" value="0.19" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/divider.xml" value="0.14" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/ic_add.xml" value="0.196" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/ic_arrow_forward_black_24dp.xml" value="0.185" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/ic_cancel_black_24dp.xml" value="0.183" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/ic_exit_to_app_black_24dp.xml" value="0.185" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/ic_keyboard_arrow_up_black_24dp.xml" value="0.183" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/ic_map_black_24dp.xml" value="0.185" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/ic_type_1.xml" value="0.2205" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/progress.xml" value="0.1895" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/progress_back.xml" value="0.196" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/ripple_selector_red_white.xml" value="0.14" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/ripple_selector_white_red.xml" value="0.14" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/rounded_drawable.xml" value="0.1435" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/drawable/rounded_edittext.xml" value="0.184" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/font/comfortaa_bold.xml" value="0.20625" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout-v21/activity_my_prices.xml" value="0.18958333333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_add_appointment.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_add_employees.xml" value="0.1328928046989721" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.16129032258064516" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_admin_profile.xml" value="0.1" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_all_garages.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_all_garages.xml" value="0.18" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_appointments.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_approved.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_assign_mech.xml" value="0.16041666666666668" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_assign_tasks.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_assign_tasks.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_atta_pay.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_brakes.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_documentation.xml" value="0.25" />
@@ -39,21 +49,28 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_employee_details.xml" value="0.18" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_first_page.xml" value="0.26403985507246375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_forgot_password.xml" value="0.15806159420289856" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_garage_content.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_garage_profile.xml" value="0.1671875" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_garage_speciality.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_garageinfo.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_google_maps.xml" value="0.18" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_history.xml" value="0.22402736212056434" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_login.xml" value="0.18" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_make_appointment.xml" value="0.1539855072463768" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_mech_login.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_mech_profile.xml" value="0.25" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_mechanics_dashboard.xml" value="0.22" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_my_garage.xml" value="0.18" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_mechanics_dashboard.xml" value="0.12" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_mechanics_signup.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_my_garage.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_my_mechanics.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_my_prices.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_my_tasks.xml" value="0.22402736212056434" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_mytasks.xml" value="0.15896739130434784" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_nearby_garages.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_notifications.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_nearby_garages.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_notifications.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_own_worker_profile.xml" value="0.14" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_payments.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_register_car.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_specialities.xml" value="0.18" />
@@ -62,13 +79,16 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_user_login.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/activity_user_sign_up.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/add_pair_alert_dialog_layout.xml" value="0.18697916666666667" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/adminappbar.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/adminappbar.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/alert_progress.xml" value="0.1453612654980761" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/app_bar_admin_dashboard.xml" value="0.11904761904761904" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/app_bar_main.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/app_bar_mainpage.xml" value="0.25729166666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/appointmet_item.xml" value="0.18" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/card_background_selector.xml" value="0.1875" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/card_top_services.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/content_admin_dashboard.xml" value="0.26621160409556316" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/content_main.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/content_mainadmin.xml" value="0.26875" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/dialog_ride_review.xml" value="0.1734375" />
@@ -77,43 +97,63 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/fragment_activeappointments.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/fragment_all_appointments.xml" value="0.253125" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/fragment_allappointments.xml" value="0.2546875" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/fragment_brakes_car_problems.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/fragment_bottom_sheet_sort.xml" value="0.21248396750748183" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/fragment_bottom_sheet_sort_leave.xml" value="0.21248396750748183" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/fragment_bottom_sheet_task.xml" value="0.21248396750748183" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/fragment_brake_service_fee.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/fragment_brakes_car_problems.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/fragment_leave_management.xml" value="0.14621633176571183" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/fragment_worker_details.xml" value="0.22402736212056434" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/image_lv_item.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/input_appointment.xml" value="0.2231722958529286" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/input_employee.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/input_file.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/item.xml" value="0.26766304347826086" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/layout_admin_profile.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/item_card_request.xml" value="0.26222826086956524" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/layout_admin_profile.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/layout_appointments.xml" value="0.22239583333333332" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/layout_first.xml" value="0.13272543059777103" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/layout_first.xml" value="0.33" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/layout_home.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/layout_login.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/layout_mechanics.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/layout_profile.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/layout_register.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/leave_management_dialog.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/list_item_card.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/listview.xml" value="0.15416666666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/main_in_app_messages_recycler_view_item_layout.xml" value="0.1828125" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/main_notifications_recycler_view_item_layout.xml" value="0.1828125" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/mechanics_login.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/nav_header.xml" value="0.1539855072463768" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/nav_header_admin_dashboard.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/profile_list_item.xml" value="0.14492753623188406" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/retrieved_layout.xml" value="0.15" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/retrieved_appointments.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/retrieved_layout.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/retrieved_mech.xml" value="0.24166666666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/row.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/send_outcome_alert_dialog_layout.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/toaster_toast_card_layout.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/toolbar.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/update_alert_dialog_layout.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/update_appointment.xml" value="0.13253527148353997" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/update_data.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/update_mechdets.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/usercontent_main.xml" value="0.26875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/usercontent_main.xml" value="0.16" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/usernavdrawer.xml" value="0.26875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/worker_leave_list_item.xml" value="0.18" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/layout/worker_list_item.xml" value="0.10474561778537837" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/menu/admindashboarddrawer.xml" value="0.22402736212056434" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/menu/bottomnavbarmechs.xml" value="0.18" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/menu/driver_main.xml" value="0.39695550351288056" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/menu/edit_menu.xml" value="0.1453612654980761" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/menu/main_menu.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/menu/menu_main.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/menu/nav_header_admin_dashboard.xml" value="0.14194100042753313" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/menu/navigation_menu.xml" value="0.253125" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/menu/user_bottom_navigation.xml" value="0.26875" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AttaMechanics/app/src/main/res/menu/usernavdrawer.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/user/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_dropdown_item_1line.xml" value="0.109486000835771" />
       </map>
     </option>
   </component>

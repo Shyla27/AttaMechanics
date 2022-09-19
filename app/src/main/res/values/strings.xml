@@ -30,12 +30,58 @@
     <string name="my_desc">All about our garage. Previously written when garage is creating an account</string>
     <string name="contact">Contact</string>
 
+    <string name="phone_driver">Phone</string>
+    <string name="call_uber">Call Car</string>
+
+    <string name="sorting">sorting</string>
+    <string name="my_tasks">My Tasks</string>
+    <string name="calendar">Calendar</string>
+    <string name="apply_for_leave">Apply for leave</string>
+    <string name="search">Search</string>
+    <string name="allowances">Allowances</string>
+    <string name="current_project">Current Project</string>
+    <string name="extra_quote">Extra quote</string>
+    <string name="reason_for_leave">Reason for leave</string>
+    <string name="to">to</string>
+    <string name="from">from</string>
+    <string name="request">REQUEST</string>
+    <string name="apply_for_leave_title">Apply For Leave</string>
+    <string name="allowances_list">List of Allowances</string>
+    <string name="laws">Laws</string>
+    <string name="worker_laws">Worker Laws</string>
+
+    <string name="menu_worker_details">Employee Details</string>
+    <string name="menu_project_details">Project details</string>
+    <string name="allowance_management">Allowance Management</string>
+    <string name="leave_management">Leave Management</string>
+    <string name="go_to_calender">Go to Calender</string>
+    <string name="tasks">Tasks</string>
+    <string name="phone">Phone</string>
+    <string name="working">Working</string>
+    <string name="destination">Destination</string>
+    <string name="picked_customer">Picked customer</string>
 
     <string name="type_4">Bike</string>
     <string name="type_3">SUV</string>
     <string name="type_2">Van</string>
     <string name="type_1">Car</string>
-
+    <string name="project_status">Project Status</string>
+    <string name="_70">70%</string>
+    <string name="date_of_birth">Date of Birth (Format - 19/02/2000)</string>
+    <string name="gender">Gender</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="role">Role</string>
+    <string name="dummy_paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ante nisl, dictum bibendum nisi sit amet, faucibus consequat justo. Nunc mollis arcu eget eros pharetra ullamcorper. Vivamus gravida lobortis dignissim. Etiam id ultricies urna. Donec suscipit diam vitae nisl efficitur, id aliquam augue volutpat. Proin placerat arcu non mi pulvinar sagittis. Vestibulum mollis scelerisque odio aliquam dictum. Vivamus semper erat enim, vitae hendrerit magna posuere id. Aliquam tincidunt diam quis tellus eleifend imperdiet a fringilla enim. Curabitur congue ex lacus, ac congue lacus suscipit a.</string>
+    <string name="dummy_line">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="dummy_two_lines">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ante nisl, dictum bibendum nisi sit amet, faucibus consequat justo.</string>
+    <string name="dummy_short_name">John Doe</string>
+    <string name="dummy_long_name">Robert Downey JR.</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="logout">Logout</string>
+    <string name="full_name">Full Name</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
     <string name="how_was_your_ride">How was your ride?</string>
 
     <string name="name">Name </string>
@@ -94,6 +140,216 @@
     <string name="revoke_consent">Revoke Consent</string>
 
     <string name="navigate_next_activity">Next activity</string>
+    <string name="not_approved">Your Account has not been approved</string>
+    <string name="no_phone_call_permissions">You Didn\'t give  phone call permissions</string>
+    <string name="garage_no_phone">Garage does not have connected number</string>
 
 
+    <string name="style_json">
+  [
+        {
+        \elementType\: \"geometry\",
+        \stylers\: [{\color\: \"#242f3e"\}]
+        },
+        {
+        \elementType\: \"labels.text.stroke\",
+        \stylers\: [{\color\: \"#242f3e"\}]
+        },
+        {
+        \elementType\: \"labels.text.fill\",
+        \stylers\: [{\color\: \"#746855"\}]
+        },
+    {
+        \"featureType\": \"all\",
+        \"elementType\": \"labels\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"administrative\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            },
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"landscape\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.attraction\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.business\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.government\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#dfdcd5\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.medical\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#dfdcd5\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.park\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#bad294\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.place_of_worship\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.school\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.sports_complex\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.highway\",
+        \"elementType\": \"geometry.fill\",
+        \"stylers\": [
+            {
+                \"color\": \"#ffffff\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.highway\",
+        \"elementType\": \"geometry.stroke\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.arterial\",
+        \"elementType\": \"geometry.fill\",
+        \"stylers\": [
+            {
+                \"color\": \"#ffffff\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.arterial\",
+        \"elementType\": \"geometry.stroke\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.local\",
+        \"elementType\": \"geometry.fill\",
+        \"stylers\": [
+            {
+                \"color\": \"#fbfbfb\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.local\",
+        \"elementType\": \"geometry.stroke\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"transit\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"water\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#a5d7e0\"
+            }
+        ]
+    }
+]
+  </string>
+
+    <string name="customer">Customer</string>
+    <string name="driver">Driver</string>
+    <string name="getting_driver">Getting Your Driver ....</string>
+    <string name="looking_driver">Looking For Your Driver…</string>
+    <string name="driver_here">Driver Here</string>
+    <string name="driver_found">Driver Found</string>
+    <string name="drive_complete">Drive Completed</string>
 </resources>

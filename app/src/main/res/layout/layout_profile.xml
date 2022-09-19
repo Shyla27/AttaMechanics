@@ -48,8 +48,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:id="@+id/garagename"
-                    android:fontFamily="@font/nunito_sans_light"
+                    android:id="@+id/garageName"
+                    android:fontFamily="@fonts/nunito_sans_light"
                     android:text="Garage Name "
                     android:textColor="#424242"
                     android:textSize="21sp"
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:fontFamily="@font/nunito_sans_light"
+                android:fontFamily="@fonts/nunito_sans_light"
                 android:gravity="center"
                 android:padding="13dp"
                 android:text="User Info"
@@ -95,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:fontFamily="@font/nunito_sans_light"
+                android:fontFamily="@fonts/nunito_sans_light"
                 android:gravity="center"
                 android:padding="13dp"
                 android:text="Gallery"
@@ -114,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:fontFamily="@font/nunito_sans_light"
+                android:fontFamily="@fonts/nunito_sans_light"
                 android:gravity="center"
                 android:padding="13dp"
                 android:text="Review"
@@ -149,17 +149,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="10dp"
                             android:id="@+id/editdescription"
-                            android:fontFamily="@font/nunito_sans_light"
+                            android:fontFamily="@fonts/nunito_sans_light"
                             android:text="Edit"
                             android:textColor="#FFCF66"
                             android:textSize="14sp" />
@@ -192,15 +188,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
-                        android:fontFamily="@font/nunito_sans_light"
+                        android:fontFamily="@fonts/nunito_sans_light"
                         android:text="@string/contact"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -237,7 +229,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/officenumber"
                             android:layout_marginStart="20dp"
-                            android:fontFamily="@font/nunito_sans_light"
+                            android:fontFamily="@fonts/nunito_sans_light"
                             android:text="+254 795811714"
                             android:textColor="@color/background"
                             android:textSize="15sp" />
@@ -261,7 +253,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:fontFamily="@font/nunito_sans_light"
+                            android:fontFamily="@fonts/nunito_sans_light"
                             android:text="example@atta.com"
                             android:id="@+id/garagenamemail"
                             android:textColor="@color/background"
@@ -287,7 +279,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:id="@+id/garagelocation"
-                            android:fontFamily="@font/nunito_sans_light"
+                            android:fontFamily="@fonts/nunito_sans_light"
                             android:text="Juja, Nairobi Kenya"
                             android:textColor="@color/background"
                             android:textSize="15sp" />

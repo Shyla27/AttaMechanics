@@ -19,6 +19,52 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AttaMechanics">
         <activity
+            android:name=".Admin.MyTasks"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.OwnWorkerProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Mechs.MechLogin"
+            android:exported="false" />
+        <activity
+            android:name=".Mechs.MechanicsSignup"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.GarageSettings"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.Payments"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.HistoryActivity"
+            android:exported="false"
+            tools:ignore="MissingClass" />
+        <activity
+            android:name=".Specialities.Brakes"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.Specialities"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.CreateGarage"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AttaPay"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.MyGarage"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AssignMech"
+            android:exported="false" />
+        <activity
             android:name=".Users.NearbyGarages"
             android:exported="false" />
         <activity
@@ -49,13 +95,7 @@
             android:name=".Admin.EditAppointment"
             android:exported="false" />
         <activity
-            android:name=".Admin.AddAppointment"
-            android:exported="false" />
-        <activity
             android:name=".Admin.AddEmployees"
-            android:exported="false" />
-        <activity
-            android:name=".Admin.Appointments"
             android:exported="false" />
         <activity
             android:name=".Admin.MyMechanics"

@@ -71,6 +71,7 @@ public class EmployeeDetails extends AppCompatActivity {
     private String speciality;
 
     BottomNavigationView bottomNavigation;
+    private Button assigntask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +83,7 @@ public class EmployeeDetails extends AppCompatActivity {
         EditText mobilenumber = findViewById(R.id.employeemobilenumber);
         EditText specialty = findViewById(R.id.employeespecialty);
 
-        Button assigntask = findViewById(R.id.assign);
+        Button assigntask = findViewById(R.id.assigntasktoemployee);
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -99,11 +100,7 @@ public class EmployeeDetails extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), GoogleMaps.class));
                     overridePendingTransition(0, 0);
                     return true;
-                case R.id.notify:
 
-                    startActivity(new Intent(getApplicationContext(), Notifications.class));
-                    overridePendingTransition(0, 0);
-                    return true;
             }
             return false;
         });
@@ -179,14 +176,14 @@ public class EmployeeDetails extends AppCompatActivity {
 
 
                 if (TextUtils.isEmpty(employename)) {
-                    employeename.setError("Task Required");
+                    employeename.setError("Employee Required");
                     return;
                 }
                 if (TextUtils.isEmpty(employeeemail)) {
                     employemail.setError("Description Required");
                     return;
                 } else {
-                    loader.setMessage("Adding your task");
+                    loader.setMessage("Adding Employee");
                     loader.setCanceledOnTouchOutside(false);
                     loader.show();
 
@@ -196,7 +193,7 @@ public class EmployeeDetails extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(EmployeeDetails.this, "Task has been inserted successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(EmployeeDetails.this, "Employee has been added successfully", Toast.LENGTH_SHORT).show();
                             } else {
                                 String error = task.getException().toString();
                                 Toast.makeText(EmployeeDetails.this, "Failed: " + error, Toast.LENGTH_SHORT).show();
@@ -258,7 +255,14 @@ public class EmployeeDetails extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.update_mechdets, null);
         myDialog.setView(view);
-
+//        assigntask= findViewById(R.id.assign);
+//        assigntask.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getBaseContext(), AssignMech.class);
+//                startActivity(i);
+//            }
+//        });
         AlertDialog dialog = myDialog.create();
 
         //make the corner round
@@ -283,14 +287,13 @@ public class EmployeeDetails extends AppCompatActivity {
 
         Button deleteBtn = view.findViewById(R.id.btnDelete);
         Button updateBtn = view.findViewById(R.id.btnUpdate);
-//        Button assigntask = view.findViewById(R.id.assignEmployee);
-//        assigntask.setOnClickListener(new View.OnClickListener() {
-//                                          @Override
-//                                          public void onClick(View view) { Intent i = new Intent(getBaseContext(), AssignMech.class);
-//            startActivity(i);
-//                                          }
-//                                      });
-////
+        Button assigntask = view.findViewById(R.id.assigntasktoemployee);
+        assigntask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { Intent i = new Intent(getBaseContext(), MyTasks.class);
+            startActivity(i);
+            }
+        });
                 updateBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -308,7 +311,7 @@ public class EmployeeDetails extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(EmployeeDetails.this, "Task has been updated successfully", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(EmployeeDetails.this, "Employee Details have been updated successfully", Toast.LENGTH_SHORT).show();
                                 } else {
                                     String error = task.getException().toString();
                                     Toast.makeText(EmployeeDetails.this, "Update failed" + error, Toast.LENGTH_SHORT).show();
@@ -327,7 +330,7 @@ public class EmployeeDetails extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(EmployeeDetails.this, "Task has been deleted successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EmployeeDetails.this, "Employee Details have been deleted successfully", Toast.LENGTH_SHORT).show();
                         } else {
                             String error = task.getException().toString();
                             Toast.makeText(EmployeeDetails.this, "Delete failed" + error, Toast.LENGTH_SHORT).show();
