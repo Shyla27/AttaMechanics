@@ -28,6 +28,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -45,7 +46,7 @@ import java.util.Objects;
 public class AdminProfile extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
-    TextView profile_tv,username,bio_tv;
+    TextView profile_tv,username,email;
     EditText  bio_et;
 
     ImageView edit_img;
@@ -61,7 +62,7 @@ public class AdminProfile extends AppCompatActivity {
     private static final int IMAGE_REQUEST = 1;
     private Uri imageUri;
     private StorageTask uploadTask;
-
+    private  boolean backPressedtoexit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,55 +70,44 @@ public class AdminProfile extends AppCompatActivity {
         setContentView(R.layout.activity_admin_profile);
 
         username = findViewById(R.id.adminusername);
-        bio_tv = findViewById(R.id.bio_tv);
+        email = findViewById(R.id.bio_tv);
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         onlineUserID = fuser.getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(onlineUserID);
+        databaseReference = FirebaseDatabase.getInstance().getReference("GarageInfo").child(onlineUserID);
+if (fuser != null) {
+    String name  = fuser.getDisplayName();
+    String email = fuser.getEmail();
 
+    boolean emailVerified = fuser.isEmailVerified();
+
+    String uid = fuser.getUid();
+        }
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
-            switch(item.getItemId())
-            {
+            switch (item.getItemId()) {
                 case R.id.myaccount:
 
                     return true;
                 case R.id.navigation_home:
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    overridePendingTransition(0,0);
+                    overridePendingTransition(0, 0);
                     return true;
 
-                case R.id.notificationsmechs:
-                startActivity(new Intent(getApplicationContext(), Notifications.class));
-                    overridePendingTransition(0,0);
-                    return true;
 
                 case R.id.action_nearby:
                     startActivity(new Intent(getApplicationContext(), GoogleMaps.class));
-                    overridePendingTransition(0,0);
+                    overridePendingTransition(0, 0);
                     return true;
             }
             return false;
         });
 
-
-       databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                username.setText(user.getname());
-                bio_tv.setText(user.getEmail());
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
+
+
+
 
 
 
@@ -125,5 +115,16 @@ public class AdminProfile extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
+//    @Override
+//    public void onBackPressed() {
+//        if (backPressedtoexit) {
+//            super.onBackPressed();
+//            return;
+//        }
+//        this.backPressedtoexit = true;
+//        Snackbar.make(findViewById())
+//    }
 }
 

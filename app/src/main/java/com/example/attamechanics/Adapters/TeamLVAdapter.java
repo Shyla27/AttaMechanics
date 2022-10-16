@@ -30,7 +30,7 @@ public class TeamLVAdapter  extends ArrayAdapter<EmployeeDets> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listitemView = convertView;
         if (listitemView == null) {
-            listitemView = LayoutInflater.from(getContext()).inflate(R.layout.image_lv_item, parent, false);
+            listitemView = LayoutInflater.from(getContext()).inflate(R.layout.chat_lv_item, parent, false);
         }
         EmployeeDets employeeDets = getItem(position);
         TextView nameTV = listitemView.findViewById(R.id.idTVtext);

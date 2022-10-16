@@ -8,6 +8,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.attamechanics.Admin.AdminMaps;
 import com.example.attamechanics.Admin.AdminProfile;
 import com.example.attamechanics.Admin.GoogleMaps;
 import com.example.attamechanics.Auth.Login;
@@ -27,6 +28,7 @@ import com.example.attamechanics.Garage.GarageProfile;
 import com.example.attamechanics.R;
 import com.example.attamechanics.Users.NearbyGarages;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
@@ -36,9 +38,9 @@ public class MechanicsDashboard extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private TextView currentUser;
-    private AppCompatButton checktask, requestservice;
+    private MaterialCardView checktask, requestservice, chat;
 
-    private static String TAG = "MainActivity";
+    private static String TAG = "MechanicsDashboard";
     BottomNavigationView bottomNavigation;
 
     @Override
@@ -48,8 +50,10 @@ public class MechanicsDashboard extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        checktask= findViewById(R.id.checktasks);
+        checktask= findViewById(R.id.tasksassigned);
         requestservice= findViewById(R.id.mechrequestservice);
+        chat = findViewById(R.id.Chats);
+
         Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
@@ -60,18 +64,15 @@ public class MechanicsDashboard extends AppCompatActivity {
             switch(item.getItemId())
             {
                 case R.id.mechsaccount:
-                    startActivity(new Intent(getApplicationContext(), MechProfile.class));
+                    startActivity(new Intent(getApplicationContext(), AdminProfile.class));
                     overridePendingTransition(0,0);
                     return true;
                 case R.id.mechshome:
                     return true;
-                case R.id.notificationsmechs:
-                    startActivity(new Intent(getApplicationContext(), Notifications.class));
-                    overridePendingTransition(0,0);
-                    return true;
+
 
                 case R.id.mytasks:
-                    startActivity(new Intent(getApplicationContext(), Mytasks.class));
+                    startActivity(new Intent(getApplicationContext(), AdminMaps.class));
                     overridePendingTransition(0,0);
                     return true;
             }
@@ -82,6 +83,15 @@ public class MechanicsDashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent garage = new Intent(getApplicationContext(), AllGarages.class);
+                startActivity(garage);
+                finish();
+            }
+        });
+
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent garage = new Intent(getApplicationContext(), MechChatView.class);
                 startActivity(garage);
                 finish();
             }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_tasks">
+
+    <fragment
+        android:id="@+id/nav_tasks"
+        tools:layout="@layout/fragment_mytasks" />
+
+    <fragment
+        android:id="@+id/nav_calendar"
+        tools:layout="@layout/fragment_calendar" />
+
+    <fragment
+        android:id="@+id/nav_search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/nav_leave"
+        tools:layout="@layout/fragment_leave" />
+
+    <fragment
+        android:id="@+id/nav_allowance"
+        tools:layout="@layout/fragment_allowances" />
+
+    <fragment
+        android:id="@+id/nav_project_status"
+        tools:layout="@layout/fragment_project_status" />
+
+    <fragment
+        android:id="@+id/nav_worker_laws"
+        tools:layout="@layout/fragment_worker_laws" />
+
+</navigation>

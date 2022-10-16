@@ -33,13 +33,14 @@ public class GarageSpeciality extends AppCompatActivity {
     CheckBox c;
     String SaveString="No";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage_speciality);
 
         database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference().child("Specialities");
+        databaseReference = database.getReference("Specialities");
 
         garageSpecialityAdapter = new GarageSpecialityAdapter();
 
@@ -118,18 +119,18 @@ public class GarageSpeciality extends AppCompatActivity {
 
 
         savecontent.setOnClickListener(view -> {
-//            String user_id = mAuth.getCurrentUser().getUid();
-//            DatabaseReference current_user_db = databaseReference.child(user_id);
+          String user_id = mAuth.getCurrentUser().getUid();
+            DatabaseReference current_user_db = databaseReference.child(user_id);
 
             if (c1.isChecked()) {
             garageSpecialityAdapter.setSpeciality(s1);
-            databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+            databaseReference.child("1").setValue(garageSpecialityAdapter);
             } else {
 
             }
             if (c2.isChecked()) {
                 garageSpecialityAdapter.setSpeciality(s2);
-                databaseReference.child(String.valueOf(in+in)).setValue(garageSpecialityAdapter);
+                databaseReference.child("2").setValue(garageSpecialityAdapter);
 
 
             } else {

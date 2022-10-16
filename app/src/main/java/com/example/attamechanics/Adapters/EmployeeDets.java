@@ -6,7 +6,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EmployeeDets  implements Serializable {
+public class
+EmployeeDets  implements Serializable {
 
         private String employeename;
         private String employeeemail;
@@ -16,6 +17,9 @@ public class EmployeeDets  implements Serializable {
         public  EmployeeDets() {
         }
 
+    public static String chatWith;
+    public static String employename = "";
+    public static String password = "";
 
     public EmployeeDets(String employeename, String employeeemail, String id, String employeenumber, String speciality) {
             this.employeenumber= employeenumber;

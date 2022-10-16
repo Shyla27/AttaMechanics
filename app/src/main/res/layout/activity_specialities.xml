@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.Specialities">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:showDividers="middle"
+        android:divider="@drawable/empty_tall_divider"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atta Specialities"
+            android:layout_gravity="center"
+            android:textColor="@color/background"
+            android:textSize="30sp" />
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/battery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Battery"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/belts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Belts"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/brakes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Brakes"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/clutch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Clutch"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/doors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Doors"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/engine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Engines"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/exhaust"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Exhaust"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/filters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Filters"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fluids"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Fluids"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fuel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Fuel"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/heating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Heating"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/hoses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Hoses"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/lights"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Lights"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mirrors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Mirrors"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/sensors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Sensors"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/suspension"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Suspension"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/switches"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Switches"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/tires"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Tires"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/windows"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Windows"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/wiper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Wiper"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/diagnostics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Diagnostics"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/ignition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                style="@style/loginButton"
+                android:text="Ignition"
+                android:textColor="#FAFAFA" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

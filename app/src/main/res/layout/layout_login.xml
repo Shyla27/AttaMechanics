@@ -10,7 +10,8 @@
     android:layout_gravity="center"
     android:layout_marginTop="@dimen/loginViewsMargin"
     android:layout_marginBottom="@dimen/loginViewsMargin"
-    android:background="@color/whiteCardColor">
+    android:background="@color/headerTextColor"
+    >
 
 
     <LinearLayout
@@ -45,7 +46,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:maxLines="1"
                 android:hint="@string/login_email_hint"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,17 +61,16 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/login_password_hint"
                 android:inputType="textPassword"
-                android:maxLines="1"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <CheckBox
-            android:id="@+id/check1"
+            android:id="@+id/showpasscode"
             android:layout_marginTop="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Remember Me?"/>
+            android:text="Show Password"/>
         <TextView
             style="@style/viewParent"
             android:layout_gravity="end"
@@ -100,6 +99,14 @@
             android:textStyle="bold"
             app:backgroundTint="@color/background" />
 
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone" />
         <TextView
             style="@style/parent"
             android:textAlignment="center"

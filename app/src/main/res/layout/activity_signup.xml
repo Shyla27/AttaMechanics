@@ -1,233 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    android:background="@color/white"
     tools:context=".Auth.Signup">
 
 
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/main_activity_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
-    <ScrollView
-        style="@style/parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/main_activity_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:layout_scrollFlags="snap|scroll|enterAlways">
 
-        <RelativeLayout
-            style="@style/parent">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_alignParentTop="true"
-                android:weightSum="2">
-
-                <LinearLayout
-                    style="@style/parent"
-                    android:orientation="vertical"
-                    android:layout_weight="3">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:background="@color/primary"
-                        android:contentDescription="login background" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:orientation="vertical"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp">
-
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    style="@style/headerText"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/atta"/>
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="-8dp"
+                    android:layout_marginLeft="-8dp"
+                    android:src="@drawable/atta"
+                    app:tint="@android:color/white" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
-                <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:showDividers="middle"
+            android:layout_gravity="center"
+            android:divider="@drawable/empty_tall_divider"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin"
+            >
+
+
+            <Spinner
+                android:layout_marginTop="30dp"
+                android:id="@+id/userType"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                >
+
+            </Spinner>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="true"
+                    android:hint="Full Name"
+                    android:imeActionId="@+id/login"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_dark"
+                    tools:ignore="InvalidImeActionId" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:showDividers="middle"
-                    android:layout_gravity="center"
-                    android:divider="@drawable/empty_tall_divider"
-                    android:orientation="vertical"
-                    android:padding="@dimen/activity_horizontal_margin"
-                    >
+                    android:id="@+id/useremail"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_dark"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
 
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/mobilenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="true"
+                    android:hint="Mobile Number"
+                    android:imeActionId="@+id/login"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_dark"
+                    tools:ignore="InvalidImeActionId" />
 
-                        <EditText
-                            android:id="@+id/username"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:focusableInTouchMode="true"
-                            android:hint="Full Name"
-                            android:imeActionId="@+id/login"
-                            android:imeOptions="actionUnspecified"
-                            android:inputType="textPersonName"
-                            android:maxLines="1"
-                            android:background="@drawable/border"
-                            android:singleLine="true"
-                            android:textColor="@android:color/background_dark"
-                            tools:ignore="InvalidImeActionId" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/useremail"
-                            android:hint="@string/email"
-                            android:background="@drawable/border"
-                            android:inputType="textEmailAddress"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:textColor="@android:color/background_dark"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
 
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                        <EditText
-                            android:id="@+id/mobilenumber"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:focusableInTouchMode="true"
-                            android:hint="Mobile Number"
-                            android:imeActionId="@+id/login"
-                            android:imeOptions="actionUnspecified"
-                            android:inputType="phone"
-                            android:maxLines="1"
-                            android:background="@drawable/border"
-                            android:singleLine="true"
-                            android:textColor="@android:color/background_dark"
-                            tools:ignore="InvalidImeActionId" />
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/hint_password"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                    android:imeActionId="@+id/login"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_dark"
+                    tools:ignore="InvalidImeActionId" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/confirmpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="true"
+                    android:hint="Confirm Password"
+                    android:imeActionId="@+id/login"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_dark"
+                    tools:ignore="InvalidImeActionId" />
 
 
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/password"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:focusableInTouchMode="true"
-                            android:hint="@string/hint_password"
-
-                            android:background="@drawable/border"
-                            android:imeActionId="@+id/login"
-                            android:imeOptions="actionUnspecified"
-                            android:inputType="textPassword"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:textColor="@android:color/background_dark"
-                            tools:ignore="InvalidImeActionId" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/confirmpassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:focusableInTouchMode="true"
-                            android:hint="Confirm Password"
-                            android:imeActionId="@+id/login"
-                            android:imeOptions="actionUnspecified"
-                            android:inputType="textPassword"
-                            android:background="@drawable/border"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:textColor="@android:color/background_dark"
-                            tools:ignore="InvalidImeActionId" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/sign_up_button"
-                        style="@style/loginButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/action_sign_in_short"
-                        android:fontFamily="@fonts/nunito_sans_light"
-                        android:textColor="@color/background"
-                        android:textStyle="bold" />
+            <CheckBox
+                android:id="@+id/showpassword"
+                android:layout_marginTop="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Show Password"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/sign_up_button"
+                style="@style/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/action_sign_in_short"
+                android:fontFamily="@fonts/nunito_sans_light"
+                android:textColor="@color/background"
+                android:textStyle="bold" />
 
 
 
 
 
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/sign_in_button"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        style="@style/loginButton"
-                        android:text="@string/btn_link_to_login"
-                        android:textAllCaps="false"
-                        android:fontFamily="@fonts/nunito_sans_light"
-                        android:textColor="@color/background"
-                        android:textSize="15dp"
-                        />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/sign_in_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                style="@style/loginButton"
+                android:text="@string/btn_link_to_login"
+                android:textAllCaps="false"
+                android:fontFamily="@fonts/nunito_sans_light"
+                android:textColor="@color/background"
+                android:textSize="15dp"
+                />
 
 
 
 
-                </LinearLayout>
+        </LinearLayout>
 
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center|bottom"
-                    android:layout_marginBottom="20dp"
-                    android:visibility="gone" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone" />
 
-            </LinearLayout>
 
-        </RelativeLayout>
-
-    </ScrollView>
-
-</RelativeLayout>
+</LinearLayout>

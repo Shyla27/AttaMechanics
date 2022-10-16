@@ -10,14 +10,19 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
@@ -29,6 +34,7 @@ import android.widget.Toast;
 import com.example.attamechanics.Adapters.GlobalUser;
 import com.example.attamechanics.Adapters.User;
 import com.example.attamechanics.Admin.AdminDashboard;
+import com.example.attamechanics.Garage.Garageinfo;
 import com.example.attamechanics.MainActivity;
 import com.example.attamechanics.Mechs.MechanicsDashboard;
 import com.example.attamechanics.R;
@@ -45,6 +51,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -71,6 +79,13 @@ public class Login extends AppCompatActivity {
     FirebaseUser currentUser;
     FrameLayout frameLayoutLogin;
     TextView tv_forgetPassword, btn_signup;
+    CheckBox checkBox;
+
+    private Uri imageUri;
+//    private AppPermissions appPermissions;
+//    private LoadingDialog loadingDialog;
+    private String email, username, password;
+    private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,14 +93,27 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         authStateListener = firebaseAuth -> {
-      FirebaseUser user = auth.getCurrentUser();
-      if (user != null) {
-          Intent intent = new Intent(Login.this, MainActivity.class);
-          startActivity(intent);
-          finish();
-      }
-        };
+            FirebaseUser user = auth.getCurrentUser();
+            if (user != null) {
 
+
+//                if (type.equals("Mechanic Details")) {
+//                    Toast.makeText(this, "Welcome Back! ", Toast.LENGTH_SHORT).show();
+//
+//                    Intent Signup = new Intent(getApplicationContext(), MechanicsDashboard.class);
+//                    startActivity(Signup);
+//                    finish();
+//                } else if (type.equals("Garage Admin")) {
+//                    DatabaseReference admindatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+//                    Toast.makeText(this, "Welcome Back! ", Toast.LENGTH_SHORT).show();
+//
+//                    Intent Signup = new Intent(getApplicationContext(), MainActivity.class);
+//                    startActivity(Signup);
+//                    finish();
+//                }
+            }
+
+        };
 
         inputEmail = findViewById(R.id.email);
         inputPassword = findViewById(R.id.password);
@@ -94,6 +122,20 @@ public class Login extends AppCompatActivity {
         btn_logIn = findViewById(R.id.btn_login);
         TextView btnReset = findViewById(R.id.btn_reset_password);
         Spinner userType = findViewById(R.id.userType);
+
+        checkBox = findViewById(R.id.showpasscode);
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (!b) {
+                    inputPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    inputPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }
+        });
+
+
         firebaseDatabase = FirebaseDatabase.getInstance();
         admindatabase= firebaseDatabase.getReference("Users");
         logInViewModel = new ViewModelProvider(this, (ViewModelProvider.Factory) ViewModelProvider.AndroidViewModelFactory
@@ -168,12 +210,12 @@ public class Login extends AppCompatActivity {
                         chooseUser();
                         progressBar.setVisibility(View.VISIBLE);
                         if (task.isSuccessful()) {
-                        FirebaseDatabase.getInstance().getReference("User")
+                        FirebaseDatabase.getInstance().getReference("Users")
                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        GlobalUser.currentuser = (com.example.attamechanics.Adapters.User) snapshot.getValue();
+    //                                    GlobalUser.currentuser = (com.example.attamechanics.Adapters.User) snapshot.getValue();
 
                                     }
 
@@ -304,7 +346,7 @@ public class Login extends AppCompatActivity {
             finish();
         }
         else if (type.equals("Garage Admin")) {
-            DatabaseReference admindatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers");
+            DatabaseReference admindatabase = FirebaseDatabase.getInstance().getReference().child("Users");
             Toast.makeText(this, "Welcome Back! " ,Toast.LENGTH_SHORT).show();
 
             Intent Signup = new Intent(getApplicationContext(), MainActivity.class);

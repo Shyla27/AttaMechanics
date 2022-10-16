@@ -67,7 +67,7 @@ public class Documentation extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         storageReference = storage.getReference();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("GarageInfo/Garages");
+        databaseReference = firebaseDatabase.getReference("Garages");
         uploadcert.setOnClickListener(view ->UploadCert());
 
         btnSelect.setOnClickListener(view -> SelectImage());

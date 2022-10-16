@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.attamechanics.Adapters.GaragesAdapter;
+import com.example.attamechanics.Auth.Login;
 import com.example.attamechanics.Auth.Signup;
 import com.example.attamechanics.MainActivity;
 import com.example.attamechanics.R;
@@ -62,7 +63,7 @@ public class EditGarageProfile extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         addlogo = findViewById(R.id.addlogo);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("GarageInfo/Garages");
+        databaseReference = firebaseDatabase.getReference("Garages");
         storage = FirebaseStorage.getInstance();
         auth = FirebaseAuth.getInstance();
         storageReference = storage.getReference();
@@ -87,7 +88,7 @@ public class EditGarageProfile extends AppCompatActivity {
                     DatabaseReference current_user_id = databaseReference.child(user_id);
                     current_user_id.child("Description").setValue(descript);
 
-                    Intent i = new Intent(EditGarageProfile.this, GarageSpeciality.class);
+                    Intent i = new Intent(EditGarageProfile.this, Login.class);
                     startActivity(i);
                     finish();
 

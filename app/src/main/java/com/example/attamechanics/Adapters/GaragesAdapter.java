@@ -8,6 +8,8 @@ import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.PropertyName;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 @IgnoreExtraProperties
 public  class GaragesAdapter implements Parcelable, Serializable {
@@ -28,6 +30,7 @@ public  class GaragesAdapter implements Parcelable, Serializable {
     public boolean isNew, isCreated;
 
 
+    public Map<String, Boolean> garages = new HashMap<>();
 
 public GaragesAdapter() {
 
@@ -41,6 +44,11 @@ public GaragesAdapter() {
 
     }
 
+//    public GaragesAdapter (String garagename, String garageId, String description) {
+//    this.garageId = garageId;
+//    this.description = description;
+//    this.garagename = garagename;
+//    }
 
     public GaragesAdapter(String garageID, String idnumber) {
         this.idnumber = idnumber;
@@ -106,6 +114,7 @@ public  GaragesAdapter(String id, String s, String specialit, String garageID, S
     public void setIdnumber(String idnumber) {
         this.idnumber = idnumber;
     }
+
 
 
     public void setGaragename(String garagename) {

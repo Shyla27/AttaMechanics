@@ -83,12 +83,12 @@ public class EmployeeDetails extends AppCompatActivity {
         EditText mobilenumber = findViewById(R.id.employeemobilenumber);
         EditText specialty = findViewById(R.id.employeespecialty);
 
-        Button assigntask = findViewById(R.id.assigntasktoemployee);
+        assigntask = findViewById(R.id.assigntasktoemployee);
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.myaccount:
-                    startActivity(new Intent(getApplicationContext(), AdminProfile.class));
+                    startActivity(new Intent(getApplicationContext(), MyGarage.class));
                     overridePendingTransition(0, 0);
                     return true;
                 case R.id.navigation_home:
@@ -106,11 +106,11 @@ public class EmployeeDetails extends AppCompatActivity {
         });
 
 
-        Toolbar mToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("My Mechanics");
-        mAuth = FirebaseAuth.getInstance();
+            Toolbar mToolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(mToolbar);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setTitle("My Mechanics");
+            mAuth = FirebaseAuth.getInstance();
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
@@ -255,14 +255,6 @@ public class EmployeeDetails extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.update_mechdets, null);
         myDialog.setView(view);
-//        assigntask= findViewById(R.id.assign);
-//        assigntask.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(getBaseContext(), AssignMech.class);
-//                startActivity(i);
-//            }
-//        });
         AlertDialog dialog = myDialog.create();
 
         //make the corner round
@@ -288,11 +280,8 @@ public class EmployeeDetails extends AppCompatActivity {
         Button deleteBtn = view.findViewById(R.id.btnDelete);
         Button updateBtn = view.findViewById(R.id.btnUpdate);
         Button assigntask = view.findViewById(R.id.assigntasktoemployee);
-        assigntask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) { Intent i = new Intent(getBaseContext(), MyTasks.class);
-            startActivity(i);
-            }
+        assigntask.setOnClickListener(view1 -> { Intent i = new Intent(getBaseContext(), Chat.class);
+        startActivity(i);
         });
                 updateBtn.setOnClickListener(new View.OnClickListener() {
                     @Override

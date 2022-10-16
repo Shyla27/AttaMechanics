@@ -17,13 +17,15 @@
         app:showAsAction="ifRoom" />
 
 
-    <item
-        android:id="@+id/notificationsmechs"
-        android:enabled="true"
-        android:icon="@drawable/ic_notifications_white_24dp"
-        android:title="Notifications"
-        app:showAsAction="ifRoom" />
 
+
+
+    <item
+        android:id="@+id/chats"
+        android:enabled="true"
+        android:icon="@android:drawable/sym_action_chat"
+        android:title="Chats"
+        app:showAsAction="ifRoom" />
 
 
     <item

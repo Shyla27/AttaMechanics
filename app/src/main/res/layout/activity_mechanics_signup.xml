@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:background="@color/white"
+    tools:context=".Mechs.MechanicsSignup">
+
+
+
+
+    <ScrollView
+        style="@style/parent">
+
+        <RelativeLayout
+            style="@style/parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:weightSum="2">
+
+                <LinearLayout
+                    style="@style/parent"
+                    android:orientation="vertical"
+                    android:layout_weight="3">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@color/primary"
+                        android:contentDescription="login background" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    style="@style/headerText"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/atta"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:showDividers="middle"
+                    android:layout_gravity="center"
+                    android:divider="@drawable/empty_tall_divider"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    >
+
+
+
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/mechusername"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusableInTouchMode="true"
+                            android:hint="Full Name"
+                            android:imeActionId="@+id/login"
+                            android:imeOptions="actionUnspecified"
+                            android:inputType="textPersonName"
+                            android:maxLines="1"
+                            android:background="@drawable/border"
+                            android:singleLine="true"
+                            android:textColor="@android:color/background_dark"
+                            tools:ignore="InvalidImeActionId" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/mechemail"
+                            android:hint="@string/email"
+                            android:background="@drawable/border"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="@android:color/background_dark"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/mechmobilenumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusableInTouchMode="true"
+                            android:hint="Mobile Number"
+                            android:imeActionId="@+id/login"
+                            android:imeOptions="actionUnspecified"
+                            android:inputType="phone"
+                            android:maxLines="1"
+                            android:background="@drawable/border"
+                            android:singleLine="true"
+                            android:textColor="@android:color/background_dark"
+                            tools:ignore="InvalidImeActionId" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/passcode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusableInTouchMode="true"
+                            android:hint="@string/hint_password"
+
+                            android:background="@drawable/border"
+                            android:imeActionId="@+id/login"
+                            android:imeOptions="actionUnspecified"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="@android:color/background_dark"
+                            tools:ignore="InvalidImeActionId" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/confirmpasscode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusableInTouchMode="true"
+                            android:hint="Confirm Password"
+                            android:imeActionId="@+id/login"
+                            android:imeOptions="actionUnspecified"
+                            android:inputType="textPassword"
+                            android:background="@drawable/border"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="@android:color/background_dark"
+                            tools:ignore="InvalidImeActionId" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/sign_upmech"
+                        style="@style/loginButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/action_sign_in_short"
+                        android:fontFamily="@fonts/nunito_sans_light"
+                        android:textColor="@color/background"
+                        android:textStyle="bold" />
+
+
+
+
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/loginmech"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        style="@style/loginButton"
+                        android:text="@string/btn_link_to_login"
+                        android:textAllCaps="false"
+                        android:fontFamily="@fonts/nunito_sans_light"
+                        android:textColor="@color/background"
+                        android:textSize="15dp"
+                        />
+
+
+
+
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

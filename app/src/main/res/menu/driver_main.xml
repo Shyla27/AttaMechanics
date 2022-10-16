@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home"
+            android:title="Home"/>
+        <item
+            android:id="@+id/settings"
+            android:title="My Team"
+            android:icon="@drawable/team"/>
+        <item
+            android:id="@+id/payout"
+            android:title="Payments"
+            android:icon="@drawable/prices"
+            android:tooltipText="Issue payout"/>
+
+        <item
+            android:id="@+id/history"
+            android:title="Appointments"
+            android:icon="@drawable/appointment"
+            android:tooltipText="view full drive history"/>
+
+        <item
+            android:id="@+id/cartypes"
+            android:title="Car Types"
+            android:icon="@drawable/service"
+            android:tooltipText="view full drive history"/>
+    </group>
+</menu>

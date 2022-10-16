@@ -5,17 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/white"
+    android:background="@color/headerTextColor"
     tools:context=".Auth.Login">
 
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone" />
 
 
 
@@ -33,10 +26,11 @@
                 android:weightSum="12">
 
                 <LinearLayout
-                    style="@style/parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
                     android:background="@drawable/login_shape_bk"
                     android:orientation="vertical"
-                    android:layout_weight="3">
+                    android:layout_weight="1">
 
                     <ImageView
                         style="@style/parent"
@@ -52,14 +46,13 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
                 android:orientation="vertical"
-                android:layout_marginTop="40dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp">
 
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     style="@style/headerText"
                     android:layout_gravity="center"
                     android:layout_marginTop="40dp"

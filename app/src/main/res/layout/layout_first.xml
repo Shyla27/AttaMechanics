@@ -60,27 +60,8 @@
                 android:background="@color/background" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="20dp">
-
-        </Space>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/mechanicsignup"
-                style="@style/loginButton"
-                android:text="Continue as Mechanic "
-                android:textColor="#FAFAFA"
-                android:background="@color/background" />
 
 
-        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 

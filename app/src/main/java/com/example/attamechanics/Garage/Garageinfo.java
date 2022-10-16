@@ -3,13 +3,24 @@ package com.example.attamechanics.Garage;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
+import static androidx.constraintlayout.motion.widget.Debug.getLocation;
+
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +32,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +44,8 @@ import com.example.attamechanics.Admin.GoogleMaps;
 import com.example.attamechanics.MainActivity;
 import com.example.attamechanics.Notifications;
 import com.example.attamechanics.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,13 +64,16 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Garageinfo extends AppCompatActivity {
 
     private TextInputEditText garagename, officenumber, latitud, longitud;
-    private Button proceed, livelocation,showonmap;
+    private Button proceed, livelocation, showonmap;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private static final int REQUEST_LOCATION = 1;
@@ -66,6 +83,9 @@ public class Garageinfo extends AppCompatActivity {
     private final ArrayList permissionsRejected = new ArrayList();
     private final ArrayList permissions = new ArrayList();
     private FirebaseAuth auth;
+
+    FusedLocationProviderClient fusedLocationProviderClient;
+
     private final static int ALL_PERMISSIONS_RESULT = 101;
     LocationTrack locationTrack;
 
@@ -78,53 +98,47 @@ public class Garageinfo extends AppCompatActivity {
         officenumber = findViewById(R.id.officenumber);
         proceed = findViewById(R.id.proceed);
         loadingPB = findViewById(R.id.progressBar);
-        latitud= findViewById(R.id.latitude);
+        latitud = findViewById(R.id.latitude);
         longitud = findViewById(R.id.longitude);
         livelocation = findViewById(R.id.livelocation);
-
         auth = FirebaseAuth.getInstance();
+
         livelocation.setOnClickListener(view -> {
-            locationTrack = new LocationTrack(Garageinfo.this);
+//            locationTrack = new LocationTrack(Garageinfo.this);
+//            if (locationTrack.canGetLocation()) {
+//
+//
+//                double longitude = locationTrack.getLongitude();
+//                double latitude = locationTrack.getLatitude();
+//                latitud.setText(String.valueOf(latitude));
+//                longitud.setText(String.valueOf(longitude));
+//                Toast.makeText(getApplicationContext(), "Longitude:" + longitude + "\nLatitude:" + latitude, Toast.LENGTH_SHORT).show();
+//            } else {
+//
+//                locationTrack.showSettingsAlert();
+//            }
 
-
-            if (locationTrack.canGetLocation()) {
-
-
-                double longitude = locationTrack.getLongitude();
-                double latitude = locationTrack.getLatitude();
-                latitud.setText(String.valueOf(latitude));
-                longitud.setText(String.valueOf(longitude));
-                Toast.makeText(getApplicationContext(), "Longitude:" + longitude + "\nLatitude:" + latitude, Toast.LENGTH_SHORT).show();
+            if (ActivityCompat.checkSelfPermission(Garageinfo.this, ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                getLocatian();
             } else {
-
-                locationTrack.showSettingsAlert();
+                ActivityCompat.requestPermissions(Garageinfo.this, new String[]{ACCESS_FINE_LOCATION}, 44);
             }
+
 
         });
 
-        permissions.add(ACCESS_FINE_LOCATION);
-        permissions.add(ACCESS_COARSE_LOCATION);
-        permissionsToRequest = findUnAskedPermissions(permissions);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-
-            if (permissionsToRequest.size() > 0)
-                requestPermissions((String[]) permissionsToRequest.toArray(new String[permissionsToRequest.size()]), ALL_PERMISSIONS_RESULT);
-        }
-
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("GarageInfo/Garages");
+        databaseReference = firebaseDatabase.getReference("Garages");
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                loadingPB.setVisibility(View.VISIBLE);
                 String garagenam = Objects.requireNonNull(garagename.getText()).toString();
                 String officenum = Objects.requireNonNull(officenumber.getText()).toString();
                 String latitde = Objects.requireNonNull(latitud.getText()).toString();
                 String longiude = Objects.requireNonNull(longitud.getText()).toString();
                 garageID = garagenam;
-                GaragesAdapter garagesAdapter = new GaragesAdapter(garageID, garagenam, officenum, latitde,longiude);
+                GaragesAdapter garagesAdapter = new GaragesAdapter(garageID, garagenam, officenum, latitde, longiude);
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -136,7 +150,6 @@ public class Garageinfo extends AppCompatActivity {
                         current_user_id.child("OfficeNumber").setValue(officenum);
                         current_user_id.child("Latitude").setValue(latitde);
                         current_user_id.child("Longitude").setValue(longiude);
-
 
 
                         Toast.makeText(Garageinfo.this, "Garage Added..", Toast.LENGTH_SHORT).show();
@@ -152,84 +165,43 @@ public class Garageinfo extends AppCompatActivity {
                 });
             }
         });
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
+    private void getLocatian() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+    Location location = task.getResult();
+    if (location != null) {
+        try {
+            Geocoder geocoder = new Geocoder(Garageinfo.this, Locale.getDefault());
 
-            case ALL_PERMISSIONS_RESULT:
-                for (Object perms : permissionsToRequest) {
-                    if (!hasPermission((String) perms)) {
-                        permissionsRejected.add(perms);
-                    }
-                }
-
-                if (permissionsRejected.size() > 0) {
+            List<Address>  addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            latitud.setText(Html.fromHtml("" + addresses.get(0).getLatitude()));
+            longitud.setText(Html.fromHtml("" + addresses.get(0).getLongitude()));
 
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if (shouldShowRequestPermissionRationale((String) permissionsRejected.get(0))) {
-                            showMessageOKCancel("These permissions are mandatory for the application. Please allow access.",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                                requestPermissions((String[]) permissionsRejected.toArray(new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
-                                            }
-                                        }
-                                    });
-                            return;
-                        }
-                    }
-
-                }
-
-                break;
+        } catch (IOException e ) {
+            e.printStackTrace();
         }
     }
-
-    private void showMessageOKCancel(String s, DialogInterface.OnClickListener onClickListener) {
-
-        new AlertDialog.Builder(Garageinfo.this)
-                .setMessage(s)
-                .setPositiveButton("OK", onClickListener)
-                .setNegativeButton("Cancel", null)
-                .create()
-                .show();
-    }
-
-    private ArrayList findUnAskedPermissions(ArrayList permissions) {
-
-        ArrayList result = new ArrayList();
-
-        for (Object perm : permissions) {
-            if (!hasPermission((String) perm)) {
-                result.add(perm);
             }
-        }
-
-        return result;
-    }
-
-    private boolean hasPermission(String perm) {
-        if (canMakeSmores()) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                return (checkSelfPermission(perm) == PackageManager.PERMISSION_GRANTED);
-            }
-        }
-        return true;
-    }
-
-    private boolean canMakeSmores() {
-        return (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1);
+        });
     }
 
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        locationTrack.stopListener();
-    }
 }

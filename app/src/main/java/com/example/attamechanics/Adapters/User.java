@@ -18,9 +18,10 @@ public class User implements Serializable {
             public boolean isAuthenticated;
     @Exclude
             public boolean isNew, isCreated;
-
+    String image;
     String userContactNumber;
     String userPassword;
+    boolean isNotificationEnable;
 
 
 
@@ -41,6 +42,14 @@ public class User implements Serializable {
         this.userPassword = userPassword;
     }
 
+    public User(String email, String username, String url, boolean b) {
+
+        this.email = email;
+        this.name = username;
+        this.image = url;
+        this.isNotificationEnable = b;
+
+    }
 
 
     public String getname() {
