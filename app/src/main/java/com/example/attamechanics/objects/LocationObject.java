@@ -15,7 +15,7 @@ public class LocationObject {
     public LocationObject(){
     }
 
-    public Object getCoordinates() {
+    public LatLng getCoordinates() {
         return coordinates;
     }
 

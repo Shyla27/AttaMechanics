@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 import com.example.attamechanics.Garage.GarageProfile;
 import com.example.attamechanics.R;
+import com.example.attamechanics.Users.MapCustomer;
 import com.example.attamechanics.Users.NearbyGarages;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
@@ -72,7 +73,7 @@ public class MechanicsDashboard extends AppCompatActivity {
 
 
                 case R.id.mytasks:
-                    startActivity(new Intent(getApplicationContext(), AdminMaps.class));
+                    startActivity(new Intent(getApplicationContext(), MapCustomer.class));
                     overridePendingTransition(0,0);
                     return true;
             }

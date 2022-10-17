@@ -4,11 +4,16 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#FF272727</color>
     <color name="primary">#E74404</color>
-
+    <color name="colorAccent">#00BCD4</color>
+    <color name="colorAccentDark">#007285</color>
 
     <!--colors for modern ui-->
     <color name="whiteTextColor">#fff</color>
 
+    <color name="colorRed">#F44336</color>
+    <color name="grey">#707070</color>
+    <color name="lightGrey">#C2C2C2</color>
+    <color name="lighterGrey">#ECECEC</color>
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
     <color name="colorDivider">#ECECEC</color>

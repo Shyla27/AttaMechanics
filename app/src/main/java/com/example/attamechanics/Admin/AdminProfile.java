@@ -97,7 +97,7 @@ if (fuser != null) {
 
 
                 case R.id.action_nearby:
-                    startActivity(new Intent(getApplicationContext(), GoogleMaps.class));
+                    startActivity(new Intent(getApplicationContext(), AdminMaps.class));
                     overridePendingTransition(0, 0);
                     return true;
             }
