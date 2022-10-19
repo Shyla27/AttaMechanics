@@ -33,6 +33,7 @@ import com.example.attamechanics.Garage.AllGarages;
 import com.example.attamechanics.Garage.GarageSpeciality;
 import com.example.attamechanics.Garage.Garageinfo;
 import com.example.attamechanics.MainActivity;
+import com.example.attamechanics.Mechs.MechanicsDashboard;
 import com.example.attamechanics.R;
 import com.example.attamechanics.ViewModel.SignInViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -311,7 +312,7 @@ public class Signup extends AppCompatActivity {
 
             return;
         if (type.equals("Mechanic Details")) {
-            Intent Signup = new Intent(getApplicationContext(), GarageSpeciality.class);
+            Intent Signup = new Intent(getApplicationContext(), MechanicsDashboard.class);
             startActivity(Signup);
             finish();
         }

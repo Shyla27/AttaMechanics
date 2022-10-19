@@ -2,6 +2,8 @@ package com.example.attamechanics.Adapters;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
@@ -58,6 +60,8 @@ public GaragesAdapter() {
         this.description= description;
     }
 
+    public GaragesAdapter(String garageID, TextView username, EditText bio_et) {
+    }
 
 
     public String getDescription() {

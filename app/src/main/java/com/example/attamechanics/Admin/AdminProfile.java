@@ -71,18 +71,20 @@ public class AdminProfile extends AppCompatActivity {
 
         username = findViewById(R.id.adminusername);
         email = findViewById(R.id.bio_tv);
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
-        fuser = FirebaseAuth.getInstance().getCurrentUser();
-        onlineUserID = fuser.getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference("GarageInfo").child(onlineUserID);
-if (fuser != null) {
-    String name  = fuser.getDisplayName();
-    String email = fuser.getEmail();
-
-    boolean emailVerified = fuser.isEmailVerified();
-
-    String uid = fuser.getUid();
-        }
+//        fuser = FirebaseAuth.getInstance().getCurrentUser();
+//        onlineUserID = fuser.getUid();
+        databaseReference = firebaseDatabase.getReference("Garages");
+        getData();
+//if (fuser != null) {
+//    String name  = fuser.getDisplayName();
+//    String email = fuser.getEmail();
+//
+//    boolean emailVerified = fuser.isEmailVerified();
+//
+//    String uid = fuser.getUid();
+//        }
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
@@ -104,11 +106,34 @@ if (fuser != null) {
             return false;
         });
 
+
+
     }
 
+    private void getData() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            GaragesAdapter garagesAdapter = new GaragesAdapter(garageID, username, bio_et);
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
+            String name = (String) snapshot.child("name").getValue();
 
+
+            username.setText(name);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+    }
 
 
     @Override

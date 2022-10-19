@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.myaccount:
-                    startActivity(new Intent(getApplicationContext(), MyGarage.class));
+                    startActivity(new Intent(getApplicationContext(), AdminProfile.class));
                     overridePendingTransition(0, 0);
                     return true;
                 case R.id.navigation_home:
